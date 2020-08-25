@@ -12,9 +12,7 @@ import java.util.List;
 public class Main {
     public static final String NAME_FILE = "yob1900.txt";
     private static int male_index = -1;
-    /**
-     * Start of the program.
-     */
+
     public static String q1 (){
         String[] name_data;
         String gender;
@@ -27,8 +25,6 @@ public class Main {
             female_name = lines.get(0).split(",")[0];
             for(String line : lines){
                 gender = line.split(",")[1];
-                //gender = name_data[1];
-                //System.out.println(gender+" "+gender.compareTo("M"));
                 if(gender.compareTo("M") == 0){
                     male_index = lines.indexOf(line);
                     male_name = line.split(",")[0];
@@ -78,6 +74,9 @@ public class Main {
 
         return null;
     }
+    /**
+     * Start of the program.
+     */
     public static void main (String[] args) {
         //System.out.println("Hello world");
         String first_letter = "J";

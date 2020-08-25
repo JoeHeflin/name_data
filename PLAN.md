@@ -24,7 +24,7 @@ It might require another data structure like a binary search tree to be able to 
 ### What are some ways you could test your code to make sure it is giving the correct answer (think beyond just choosing "lucky" parameter values)?
 There are a few specific cases to test:
 * Give a name that doesn't exist in the database.
-* Try unisex names which appear twice in the dataset; once as male adn once as female.
+* Try unisex names which appear twice in the dataset; once as male and once as female.
 
 ### What kinds of things make the second question harder to test?
 The files seem to be sorted by number of names to searching for a name will be harder to find manually in the data set.
@@ -35,6 +35,7 @@ Possible errors:
 * Name not found
 
 ### How would you detect those errors and what would a reasonable "answer" be in such cases?
+I would detect and throw those errors containing a message describing what went wrong.
 
 ### How would your algorithm and testing need to change (if at all) to handle multiple files (i.e., a range of years)?
 When considering multiple files, an algorithm that assigns rankings assuming the list of given names is sorted using name
