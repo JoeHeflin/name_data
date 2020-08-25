@@ -1,10 +1,12 @@
 # Data Plan
-## NAME
+## Joseph Heflin
 
 This is the link to the [assignment](http://www.cs.duke.edu/courses/compsci307/current/assign/01_data/):
 
 
 ### What is the answer to the two questions below for the data file yob1900.txt (pick a letter that makes it easy to answer)? 
+1)Mary, John
+2)There are 27407 different males that have one of 71 names beginning with J.
 
 ### Describe the algorithm you would use to answer each one.
 For the first question I plan on reading in the file, iterating through each line of text, and reading the third element of each comma separated line.
