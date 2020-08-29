@@ -8,27 +8,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Main {
-    public static final String NAME_FILE = "yob1900.txt";
+
+    public static List<Name> arrayGenerator(){
+        //int[] ret = {year};
+        return arrayGenerator("N");
+    }
 
     public static List<Name> arrayGenerator(String gender){
+        List<Integer> ret = new ArrayList<Integer>(1900);
+        return arrayGenerator(gender, ret);
+    }
+
+    public static List<Name> arrayGenerator(String gender, int year){
+        List<Integer> ret = new ArrayList<Integer>(year);
+        return arrayGenerator(gender, ret);
+    }
+
+    public static List<Name> arrayGenerator(String gender, List<Integer> years){
         List<Name> ret = new ArrayList<Name>();
+        return arrayGenerator(gender, years, ret);
+    }
+
+    public static List<Name> arrayGenerator(String gender, List<Integer> years, List<Name> nameArray){ //,int[] years)
+
+        if(years.size() == 0){
+            return nameArray;
+        }
+
+        String fileName = Integer.toString(years.get(0));
 
         try{
-            Path path = Paths.get(Main.class.getClassLoader().getResource(NAME_FILE).toURI());
+            Path path = Paths.get(Main.class.getClassLoader().getResource("yob"+fileName+".txt").toURI());
             List<String> lines = Files.readAllLines(path);
             for(String line: lines){
                 Name n = new Name(line);
                 if(n.gender.compareTo(gender)==0){
-                    ret.add(n);
+                    nameArray.add(n);
                 }
             }
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        return ret;
+        years.remove(0);
+        return arrayGenerator(gender, years, nameArray);
     }
 
     public static List<List<Name>> rankGenerator(List<Name> names){
@@ -46,23 +70,6 @@ public class Main {
             sameRank.add(name);
         }
         return ranks;
-    }
-
-    public static List<Name> arrayGenerator(){
-        List<Name> ret = new ArrayList<Name>();
-
-        try{
-            Path path = Paths.get(Main.class.getClassLoader().getResource(NAME_FILE).toURI());
-            List<String> lines = Files.readAllLines(path);
-            for(String line: lines){
-                Name n = new Name(line);
-                ret.add(n);
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return ret;
     }
 
     public static String[] p1q1(){
@@ -96,12 +103,11 @@ public class Main {
      */
 
     public static void main (String[] args) {
-        String first_letter = "J";
         String[] p1q1 = p1q1();
-        int[] p2q2 = p1q2("M",first_letter);
-        //p2q3 = p2q3;
-        //p2q4 = p2q4;
-        //p2q5 = p2q5;
-        //p2q6 = p2q6;
+        int[] p2q2 = p1q2("M","J");
+        //p2q3 = p2q3; //TODO
+        //p2q4 = p2q4; //TODO
+        //p2q5 = p2q5; //TODO
+        //p2q6 = p2q6; //TODO
     }
 }
