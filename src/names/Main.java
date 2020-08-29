@@ -4,85 +4,104 @@ package names;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Feel free to completely change this code or delete it entirely. 
- */
+
+
 public class Main {
     public static final String NAME_FILE = "yob1900.txt";
-    private static int male_index = -1;
 
-    public static String q1 (){
-        String[] name_data;
-        String gender;
-        String female_name;
-        String male_name;
+    public static List<Name> arrayGenerator(String gender){
+        List<Name> ret = new ArrayList<Name>();
 
         try{
             Path path = Paths.get(Main.class.getClassLoader().getResource(NAME_FILE).toURI());
             List<String> lines = Files.readAllLines(path);
-            female_name = lines.get(0).split(",")[0];
-            for(String line : lines){
-                gender = line.split(",")[1];
-                if(gender.compareTo("M") == 0){
-                    male_index = lines.indexOf(line);
-                    male_name = line.split(",")[0];
-                    return female_name + ", " + male_name;
+            for(String line: lines){
+                Name n = new Name(line);
+                if(n.gender.compareTo(gender)==0){
+                    ret.add(n);
                 }
             }
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return ret;
     }
-    public static int[] q2 (String gender, String letter){
-        String name;
+
+    public static List<List<Name>> rankGenerator(List<Name> names){
+        int prevCount = -1;
+
+        List <Name> sameRank = new ArrayList<Name>();
+        List<List<Name>> ranks = new ArrayList<List<Name>>();
+
+        for (Name name: names){
+            if(name.count != prevCount) {
+                ranks.add(sameRank);
+                sameRank.clear();
+                prevCount = name.count;
+            }
+            sameRank.add(name);
+        }
+        return ranks;
+    }
+
+    public static List<Name> arrayGenerator(){
+        List<Name> ret = new ArrayList<Name>();
+
+        try{
+            Path path = Paths.get(Main.class.getClassLoader().getResource(NAME_FILE).toURI());
+            List<String> lines = Files.readAllLines(path);
+            for(String line: lines){
+                Name n = new Name(line);
+                ret.add(n);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+    public static String[] p1q1(){
+        String topMale;
+        String topFemale;
+
+        List<Name> maleNameList = arrayGenerator("M");
+        List<Name> femaleNameList = arrayGenerator("F");
+
+        topMale = maleNameList.get(0).name;
+        topFemale = femaleNameList.get(0).name;
+        return new String[]{topMale, topFemale};
+    }
+
+    public static int[] p1q2(String gender, String letter){
         int [] ans = {0,0};
+        List<Name> nameList = arrayGenerator(gender);
 
-        try{
-            Path path = Paths.get(Main.class.getClassLoader().getResource(NAME_FILE).toURI());
-            List<String> lines = Files.readAllLines(path);
-
-        if(gender.compareTo("M")==0){
-            for(String line : lines.subList(male_index,lines.size())){
-                name = line.split(",")[0];
-                if(Character.compare(name.charAt(0),letter.charAt(0))==0){
-                    ans[0]++;
-                    ans[1] += Integer.parseInt(line.split(",")[2]);
-                }
+        for(Name name:nameList){
+            if(Character.compare(name.name.charAt(0),letter.charAt(0))==0){
+                ans[0]++;
+                ans[1] += name.count;
             }
-
-            return ans;
-        }
-        else{
-            for(String line : lines.subList(0,male_index)){
-                name = line.split(",")[0];
-                if(Character.compare(name.charAt(0),letter.charAt(0))==0){
-                    ans[0]++;
-                    ans[1] += Integer.parseInt(line.split(",")[2]);
-                }
-            }
-
-            return ans;
-        }
-        }
-        catch (Exception e){
-            e.printStackTrace();
         }
 
-        return null;
+        return ans;
     }
+
     /**
      * Start of the program.
      */
+
     public static void main (String[] args) {
-        //System.out.println("Hello world");
         String first_letter = "J";
-        int count = 0;
-        String q1 = Main.q1();
-        int[] q2 = Main.q2("M",first_letter);
-        System.out.println("1)"+q1+"\n"+"2)"+"There are "+q2[1]+" different people of this gender that have one of "+q2[0]+" names beginning with "+first_letter);
+        String[] p1q1 = p1q1();
+        int[] p2q2 = p1q2("M",first_letter);
+        //p2q3 = p2q3;
+        //p2q4 = p2q4;
+        //p2q5 = p2q5;
+        //p2q6 = p2q6;
     }
 }
