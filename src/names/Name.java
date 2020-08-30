@@ -1,8 +1,8 @@
 package names;
 
 class Name{
-    public static String name;
-    public static String gender;
+    public String name;
+    public String gender;
     public int count;
 
     public Name(String nameLine){

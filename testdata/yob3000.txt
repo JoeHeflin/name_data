@@ -1,0 +1,13 @@
+MaryLou,F,6
+Helen,F,6
+Anna,F,6
+Margaret,F,5
+Ruth,F,4
+Jonny,M,9929
+William,M,8579
+James,M,7999
+George,M,5403
+Charles,M,16
+Robert,M,16
+Joseph,M,16
+Frank,M,1
