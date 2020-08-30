@@ -5,6 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class NameArray extends ArrayList{
@@ -97,12 +98,13 @@ public class NameArray extends ArrayList{
         List <Name> sameRank = new ArrayList<Name>();
         List<List<Name>> ranks = new ArrayList<List<Name>>();
 
+        Collections.sort(nameArray, new SortByCount());
+
         int i = -1;
         for (Name name: nameArray){
             if(name.count != prevCount) {
                 ranks.add(new ArrayList<Name>());
                 i++;
-                    //List <Name> sameRank = new ArrayList<Name>();
                 prevCount = name.count;
             }
             ranks.get(i).add(name);
@@ -135,9 +137,5 @@ public class NameArray extends ArrayList{
             }
         }
         return -1;
-    }
-
-    public static List<Name> nameSort(List<Name> unsorted){
-        return unsorted;//TODO
     }
 }
