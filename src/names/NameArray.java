@@ -77,43 +77,51 @@ public class NameArray extends ArrayList{
     }
 
     public int findRank(String givenName){
-        List<List<Name>> rankedNames = this.rankGenerator();
+        this.rankGenerator();
         boolean breaker = false;
-        for(List<Name> rank: rankedNames){
-            for(Name name:rank){
-                String currName = name.name;
-                if (currName.compareTo(givenName)==0){
-                    return rankedNames.indexOf(rank)+1;
-                }
-
+        for(Name name: nameArray){
+            if(name.name.compareTo(givenName)==0){
+                return name.rank;
             }
         }
         return -1;
     }
 
-    public List<List<Name>> rankGenerator(){
+    public void rankGenerator(){
         int prevCount = -1;
+        int rank = -1;
 
-        List <Name> sameRank = new ArrayList<Name>();
-        List<List<Name>> ranks = new ArrayList<List<Name>>();
+        //List<List<Name>> ranks = new ArrayList<List<Name>>();
 
         Collections.sort(nameArray, new SortByCount());
 
-        int i = -1;
+        int i = 1;
         for (Name name: nameArray){
             if(name.count != prevCount) {
-                ranks.add(new ArrayList<Name>());
-                i++;
                 prevCount = name.count;
+                rank = i;
             }
-            ranks.get(i).add(name);
+            name.rank = rank;
+            i++;
         }
-        return ranks;
+        //return ranks;
     }
 
     public List<Name> topRank(){
-        List<List<Name>> ranks = this.rankGenerator();
-        return ranks.get(0);
+        this.rankGenerator();
+        List<Name> ret = new ArrayList<Name>();
+        for(Name name: nameArray){
+            if(name.rank == 1){
+                ret.add(name);
+            }
+            else if(name.rank > 1){
+                return ret;
+            }
+            else{
+                System.out.println("SOMETHING UNEXPECTED HAPPENED");
+            }
+        }
+        return ret;
     }
 
     public static int findMaxYear(){

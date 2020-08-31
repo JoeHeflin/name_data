@@ -1,4 +1,4 @@
-MaryLou,F,67
+MaryLou,F,1
 Helen,F,6
 Anna,F,601
 Margaret,F,5123423
@@ -10,4 +10,4 @@ George,M,540313242
 Charles,M,16
 Robert,M,16
 Joseph,M,16
-Elijah,M,1
+Frank,M,1
