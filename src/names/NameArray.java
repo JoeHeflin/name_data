@@ -148,27 +148,33 @@ public class NameArray extends ArrayList{
     }
 
     public  Stack<String> maxLetterFreq(){
-        String prevLetter = "?";
         int max = 0;
         Character maxC = 'z';
 
         HashMap<Character, Stack<String>> letter2names = new HashMap<>();
+        HashMap<Character, Integer> letter2count = new HashMap<>();
 
         for(Name name:nameArray){
+
             letter2names.putIfAbsent(name.name.charAt(0),new Stack<>());
+            letter2count.putIfAbsent(name.name.charAt(0),0);
+
+            int currentCount = letter2count.get(name.name.charAt(0))+name.count;
+            letter2count.put(name.name.charAt(0), currentCount);
+
             Stack<String> stack = letter2names.get(name.name.charAt(0));
             if(!stack.contains(name.name)){
                 stack.push(name.name);
             }
         }
-        for(Character c:letter2names.keySet()){
-            int size = letter2names.get(c).size();
-            if(size >=max){
-                max = size;
-                if(size == max && c<maxC){
+        for(Character c:letter2count.keySet()){
+            int total = letter2count.get(c);
+
+            if(total >= max){
+                if(total > max || c < maxC){
                     maxC = c;
                 }
-
+                max = total;
             }
         }
         return letter2names.get(maxC);

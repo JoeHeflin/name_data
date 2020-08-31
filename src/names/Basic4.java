@@ -17,7 +17,7 @@ public class Basic4 {
 
     public static void main (String[] args){
         System.out.println("Basic: Question 4");
-        int[] years = {1880,2018};
+        int[] years = {1900,1900};
         run(years);
     }
 }

@@ -22,6 +22,7 @@ class Test1Test {
         List<Name> mRank = m.topRank();
 
         for (Name name:mRank){
+            //System.out.println(name);
             assertEquals(name.name.compareTo("George"),0);
         }
         for (Name name:fRank){
