@@ -12,7 +12,6 @@ class Test1Test {
     Make sure all files are unsorted
      */
 
-
     @Test
     void singleMostPopular(){
         NameArray f = new NameArray("F", 3001);
