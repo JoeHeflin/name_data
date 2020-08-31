@@ -3,10 +3,7 @@ package names;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class NameArray extends ArrayList{
     public List<Name> nameArray;// = new ArrayList<Name>();
@@ -104,7 +101,6 @@ public class NameArray extends ArrayList{
             name.rank = rank;
             i++;
         }
-        //return ranks;
     }
 
     public List<Name> topRank(){
@@ -149,5 +145,32 @@ public class NameArray extends ArrayList{
             }
         }
         return -1;
+    }
+
+    public  Stack<String> maxLetterFreq(){
+        String prevLetter = "?";
+        int max = 0;
+        Character maxC = 'z';
+
+        HashMap<Character, Stack<String>> letter2names = new HashMap<>();
+
+        for(Name name:nameArray){
+            letter2names.putIfAbsent(name.name.charAt(0),new Stack<>());
+            Stack<String> stack = letter2names.get(name.name.charAt(0));
+            if(!stack.contains(name.name)){
+                stack.push(name.name);
+            }
+        }
+        for(Character c:letter2names.keySet()){
+            int size = letter2names.get(c).size();
+            if(size >=max){
+                max = size;
+                if(size == max && c<maxC){
+                    maxC = c;
+                }
+
+            }
+        }
+        return letter2names.get(maxC);
     }
 }
