@@ -19,4 +19,11 @@ class NameArrayTest {
         int minYear = n.findMinYear();
         assertEquals(minYear,1880);
     }
-}
+
+    @Test
+    void rankGenerator() {
+        NameArray n = new NameArray(3000);
+        n.rankGenerator();
+
+        }
+    }

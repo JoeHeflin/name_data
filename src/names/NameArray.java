@@ -12,32 +12,31 @@ public class NameArray extends ArrayList{
     public List<Name> nameArray;// = new ArrayList<Name>();
 
     /*
-    [firstYear,lastYear)
+    [firstYear,lastYear]
      */
 
     public NameArray(){
         //int[] ret = {year};
         String gender = "N";
-        int[] yearRange = {1900,1901};
+        int[] yearRange = {1900,1900};
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator(gender, yearRange, array);
     }
 
-
     public NameArray(String gender){
-        int[] yearRange = {1900,1901};
+        int[] yearRange = {1900,1900};
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator(gender, yearRange, array);
     }
 
     public NameArray(int year){
-        int[] yearRange = {year,year+1};
+        int[] yearRange = {year,year};
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator("N", yearRange, array);
     }
 
     public NameArray(String gender, int year){
-        int[] yearRange = {year,year+1};
+        int[] yearRange = {year,year};
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator(gender, yearRange, array);
     }
@@ -49,7 +48,7 @@ public class NameArray extends ArrayList{
 
     public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray){ //,int[] years)
 
-        if(yearRange[0] == yearRange[1]){
+        if(yearRange[0] == yearRange[1]+1){
             return newNameArray;
         }
 
@@ -110,6 +109,11 @@ public class NameArray extends ArrayList{
             ranks.get(i).add(name);
         }
         return ranks;
+    }
+
+    public List<Name> topRank(){
+        List<List<Name>> ranks = this.rankGenerator();
+        return ranks.get(0);
     }
 
     public static int findMaxYear(){
