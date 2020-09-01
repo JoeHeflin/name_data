@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Basic2Test {
 
     @Test
-    void test1(){
+    void test1() throws Exception {
         List<String> actual = Basic2.run("MaryLou","F",3002,3003);
         String[] actualArray = {"George, M","Margaret, F"};
         List<String> expected = new ArrayList<String>(Arrays.asList(actualArray));
@@ -22,7 +22,7 @@ class Basic2Test {
     }
 
     @Test
-    void multipleFromEachGender(){
+    void multipleFromEachGender() throws Exception {
         List<String> actual = Basic2.run("Ruth","F",3001,3003);
         String[] expectedArray = {"Charles, M","Robert, M","Joseph, M","MaryLou, F"};
         List<String> expected = new ArrayList<String>(Arrays.asList(expectedArray));
@@ -33,7 +33,7 @@ class Basic2Test {
     }
 
     @Test
-    void none(){
+    void none() throws Exception {
         List<String> actual = Basic2.run("Elijah","M",3001,3004);
         String[] actualArray = {};
         List<String> expected = new ArrayList<String>(Arrays.asList(actualArray));

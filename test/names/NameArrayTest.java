@@ -14,7 +14,7 @@ class NameArrayTest {
     }
 
     @Test
-    void findMinYear() {
+    void findMinYear() throws Exception {
         NameArray n = new NameArray();
         int minYear = n.findMinYear();
         assertEquals(minYear,1880);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Basic2 {
-    public static List<List<String>> run(String givenName,String gender,int year){
+    public static List<List<String>> run(String givenName,String gender,int year) throws Exception {
         List<List<String>> ret = new ArrayList<List<String>>();
         int mostRecentYear = NameArray.findMaxYear();
         NameArray old = new NameArray(gender, year);
@@ -46,7 +46,7 @@ public class Basic2 {
         return ret;
     }
 
-    public static List<String> run(String givenName,String gender,int year,int mostRecentYear){
+    public static List<String> run(String givenName,String gender,int year,int mostRecentYear) throws Exception {
         List<String> ret = new ArrayList<String>();
        // int mostRecentYear = NameArray.findMaxYear();
         NameArray old = new NameArray(gender, year);
@@ -76,7 +76,7 @@ public class Basic2 {
         return ret;
     }
 
-    public static void main (String[] args){
+    public static void main (String[] args) throws Exception {
         System.out.println("Basic: Question 2");
         List<List<String>> ret = run("David","M",2000);
         System.out.println("Solution for year 2000: "+ret);

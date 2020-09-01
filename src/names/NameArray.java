@@ -5,15 +5,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * Functions to perform on a collection of Name objects
+ */
 public class NameArray extends ArrayList{
-    public List<Name> nameArray;// = new ArrayList<Name>();
-
-    /*
-    [firstYear,lastYear]
-     */
+    public List<Name> nameArray;
 
     public NameArray(){
-        //int[] ret = {year};
         String gender = "N";
         int[] yearRange = {1900,1900};
         List<Name> array = new ArrayList<Name>();
@@ -43,6 +41,14 @@ public class NameArray extends ArrayList{
         nameArray = arrayGenerator(gender, yearRange, array);
     }
 
+
+    /**
+     *
+     * @param gender of names to add to collection
+     * @param yearRange start and end of the range of years to store names from, inclusive
+     * @param newNameArray an array to pass that collects names after going through multiple files recursively
+     * @return collection of Name objects
+     */
     public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray){ //,int[] years)
 
         if(yearRange[0] == yearRange[1]+1){
@@ -73,7 +79,11 @@ public class NameArray extends ArrayList{
         return nameArray.get(index);
     }
 
-    public int findRank(String givenName){
+    /**
+     * @param givenName to find rank of
+     * @return the rank of the name given
+     */
+    public int findRank(String givenName) throws Exception {
         this.rankGenerator();
         boolean breaker = false;
         for(Name name: nameArray){
@@ -81,9 +91,12 @@ public class NameArray extends ArrayList{
                 return name.rank;
             }
         }
-        return -1;
+        throw new Exception("Name not found");
     }
 
+    /**
+     * Assigns a rank to every name in collection according to count descending
+     */
     public void rankGenerator(){
         int prevCount = -1;
         int rank = -1;
@@ -103,6 +116,9 @@ public class NameArray extends ArrayList{
         }
     }
 
+    /**
+     * @return The most common name(s) from the collection
+     */
     public List<Name> topRank(){
         this.rankGenerator();
         List<Name> ret = new ArrayList<Name>();
@@ -120,33 +136,38 @@ public class NameArray extends ArrayList{
         return ret;
     }
 
+    /**
+     * @return most recent year in data set
+     */
     public static int findMaxYear(){
         int max = 0;
         for(int fileName = 0;fileName<2026;fileName++) {
             try {
                 Path path = Paths.get(Main.class.getClassLoader().getResource("yob" + fileName + ".txt").toURI());
                 max = fileName;
-            } catch (Exception e) {
-
-            }
+            } catch (Exception e) {}
         }
         return max;
     }
 
-    public static int findMinYear() {
+    /**
+     * @return earliest year in data set
+     */
+    public static int findMinYear() throws Exception {
         int min = 0;
         for (int fileName = 0; fileName < 2026; fileName++) {
             try {
                 Path path = Paths.get(Main.class.getClassLoader().getResource("yob" + fileName + ".txt").toURI());
                 min = fileName;
                 return min;
-            } catch (Exception e) {
-
-            }
+            } catch (Exception e) {}
         }
-        return -1;
+        throw new Exception("No valid year found");
     }
 
+    /**
+     * @return a collection of names beginning with the most common letter in collection
+     */
     public  Stack<String> maxLetterFreq(){
         int max = 0;
         Character maxC = 'z';
