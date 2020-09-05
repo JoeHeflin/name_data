@@ -21,6 +21,7 @@ public class Basic1 {
 
     public static void main (String[] args) throws Exception {
         System.out.println("Basic: Question 1");
+        NameArray.setDataPath("https://www2.cs.duke.edu/courses/compsci307d/fall20/assign/01_data/data/ssa_complete/");
         List<Integer> ret = run("David","M");
         System.out.println("Solution: "+ret);
     }

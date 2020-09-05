@@ -1,77 +1,113 @@
 package names;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Functions to perform on a collection of Name objects
  */
 public class NameArray extends ArrayList{
+    public static String dataPath = "testdata/";
+    public static final String FILE_PREFIX = "yob";
+    public static final String FILE_TYPE = ".txt";
     public List<Name> nameArray;
+//    public int maxYearInData = -1;
 
-    public NameArray(){
-        String gender = "N";
-        int[] yearRange = {1900,1900};
-        List<Name> array = new ArrayList<Name>();
-        nameArray = arrayGenerator(gender, yearRange, array);
-    }
+//    public NameArray() throws Exception {
+//        String gender = "N";
+//        int[] yearRange = {1900,1900};
+//        List<Name> array = new ArrayList<Name>();
+//        nameArray = arrayGenerator(gender, yearRange, array);
+//    }
+//
+//    public NameArray(String gender) throws Exception {
+//        int[] yearRange = {1900,1900};
+//        List<Name> array = new ArrayList<Name>();
+//        nameArray = arrayGenerator(gender, yearRange, array);
+//    }
 
-    public NameArray(String gender){
-        int[] yearRange = {1900,1900};
-        List<Name> array = new ArrayList<Name>();
-        nameArray = arrayGenerator(gender, yearRange, array);
-    }
-
-    public NameArray(int year){
+    public NameArray(int year) throws Exception {
         int[] yearRange = {year,year};
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator("N", yearRange, array);
     }
 
-    public NameArray(String gender, int year){
+    public NameArray(String gender, int year) throws Exception {
         int[] yearRange = {year,year};
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator(gender, yearRange, array);
     }
 
-    public NameArray(String gender, int[] yearRange){
+    public NameArray(String gender, int[] yearRange) throws Exception {
         List<Name> array = new ArrayList<Name>();
         nameArray = arrayGenerator(gender, yearRange, array);
     }
 
-
+    public static void setDataPath(String path){
+        dataPath = path;
+    }
     /**
      * @param gender of names to add to collection
      * @param yearRange start and end of the range of years to store names from, inclusive
      * @param newNameArray an array to pass that collects names after going through multiple files recursively
      * @return collection of Name objects
      */
-    public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray){ //,int[] years)
+    public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray) throws Exception { //,int[] years)
+
+//        int maxYear = -1;
 
         if(yearRange[0] == yearRange[1]+1){
+//            maxYearInData = maxYear;
             return newNameArray;
         }
 
-        String fileName = Integer.toString(yearRange[0]);
+        String year = Integer.toString(yearRange[0]);
 
+        String fileName = dataPath + FILE_PREFIX + year + FILE_TYPE;
         try{
-            Path path = Paths.get(Main.class.getClassLoader().getResource("yob"+fileName+".txt").toURI());
-            List<String> lines = Files.readAllLines(path);
-            for(String line: lines){
+            URL url = new URL(fileName);
+
+            InputStreamReader stream = new InputStreamReader(url.openStream());
+
+            BufferedReader br = new BufferedReader(stream);
+            String line;
+            while((line = br.readLine()) != null){
                 Name n = new Name(line);
-                if(n.gender.compareTo(gender)==0 || n.gender.compareTo("N")==0){
+                if(n.gender.compareTo(gender)==0 || gender.compareTo("N")==0){
                     newNameArray.add(n);
                 }
             }
         }
         catch (Exception e){
-            e.printStackTrace();
+            try {
+                File localStream = new File(fileName);
+                BufferedReader br = new BufferedReader(new FileReader(localStream));
+                String line;
+                while((line = br.readLine()) != null){
+                    Name n = new Name(line);
+                    if(n.gender.compareTo(gender)==0 || gender.compareTo("N")==0){
+                        newNameArray.add(n);
+                    }
+                }
+            } catch (Exception e1) {
+                throw new Exception("Invalid dataPath: "+fileName+", see README.md");
+            }
         }
         yearRange[0]+=1;
         return arrayGenerator(gender, yearRange, newNameArray);
     }
+
+
 
     @Override
     public Name get(int index) {
@@ -136,13 +172,44 @@ public class NameArray extends ArrayList{
     /**
      * @return most recent year in data set
      */
-    public static int findMaxYear(){
+
+    public static int findMaxYear() {
         int max = 0;
-        for(int fileName = 0;fileName<2026;fileName++) {
+        try {
+            URL url = new URL(dataPath);
+
+            InputStreamReader stream = new InputStreamReader(url.openStream());
+            BufferedReader br = new BufferedReader(stream);
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                if (line.contains("yob")) {
+                    line = line.replaceAll("(.*?)yob", "");
+                    line = line.replaceAll("\\.txt(.*)", "");
+
+                    int year = Integer.parseInt(line);
+
+                    if (year > max) {
+                        max = year;
+                    }
+                }
+            }
+        } catch (Exception e) {
             try {
-                Path path = Paths.get(Main.class.getClassLoader().getResource("yob" + fileName + ".txt").toURI());
-                max = fileName;
-            } catch (Exception e) {}
+                File dir = new File(dataPath);
+                File[] files = dir.listFiles();
+                for (File file : files) {
+                    String name = file.getName();
+                    name = name.replaceAll("[^\\d]", "");
+                    int year = Integer.parseInt(name);
+                    if (year > max) {
+                        max = year;
+                    }
+                }
+
+            } catch (Exception e1) {
+                e.printStackTrace();
+            }
         }
         return max;
     }
@@ -151,15 +218,47 @@ public class NameArray extends ArrayList{
      * @return earliest year in data set
      */
     public static int findMinYear() throws Exception {
-        int min = 0;
-        for (int fileName = 0; fileName < 2026; fileName++) {
+        int min = -1;
+
+        try{
+            URL url = new URL(dataPath);
+
+            InputStreamReader stream = new InputStreamReader(url.openStream());
+            BufferedReader br = new BufferedReader(stream);
+            String line;
+
+            while((line = br.readLine()) != null){
+                if(line.contains("yob")) {
+                    line = line.replaceAll("(.*?)yob", "");
+                    line = line.replaceAll("\\.txt(.*)", "");
+
+                    int year = Integer.parseInt(line);
+
+                    if(year < min || year < 0){
+                        min = year;
+                    }
+                }
+            }
+        } catch(Exception e){
             try {
-                Path path = Paths.get(Main.class.getClassLoader().getResource("yob" + fileName + ".txt").toURI());
-                min = fileName;
-                return min;
-            } catch (Exception e) {}
+                File dir = new File(dataPath);
+                File[] files = dir.listFiles();
+//                String firstName = files[0].getName();
+//                firstName = firstName.replaceAll("[^\\d]","");
+//                int firstYear = Integer.parseInt(firstName);
+//                min = firstYear;
+                for(File file:files) {
+                    String name = file.getName();
+                    name = name.replaceAll("[^\\d]","");
+                    int year = Integer.parseInt(name);
+                    if(year < min || min < 0){
+                        min = year;
+                    }
+                }
+
+            } catch (Exception e1) { e.printStackTrace();}
         }
-        throw new Exception("No valid year found");
+        return min;
     }
 
     /**

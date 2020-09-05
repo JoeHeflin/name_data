@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Test2Test {
+    void Test2Test(){
+        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+    }
 
     @Test
-    void singleFemale(){
+    void singleFemale() throws Exception {
         int[] actual = Test2.run(3000,"F","A");
         int[] expected = {1,6};
 
@@ -17,7 +20,7 @@ class Test2Test {
     }
 
     @Test
-    void multipleMales(){
+    void multipleMales() throws Exception {
         int[] actual = Test2.run(3000,"M", "J");
         int[] expected = {3,2600};
 
@@ -27,7 +30,7 @@ class Test2Test {
     }
 
     @Test
-    void letterNotPresent(){
+    void letterNotPresent() throws Exception {
         int[] actual = Test2.run(3000,"M", "A");
         int[] expected = {0,0};
 

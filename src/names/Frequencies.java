@@ -8,7 +8,7 @@ public class Frequencies {
     static int frequency;
     static Stack<String> names;
 
-    public static void maxNameFreq(int[] years, String gender){
+    public static void maxNameFreq(int[] years, String gender) throws Exception {
         /*
         Use two hashmaps:
             1) looks up a name to find its frequency

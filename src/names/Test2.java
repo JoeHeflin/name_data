@@ -3,7 +3,7 @@ package names;
 import java.util.List;
 
 public class Test2 {
-    public static int[] run(int year, String gender, String letter){
+    public static int[] run(int year, String gender, String letter) throws Exception {
         int [] ans = {0,0};
         NameArray nameList = new NameArray(gender,year);
 
@@ -15,7 +15,7 @@ public class Test2 {
         }
         return ans;    }
 
-    public static void main (String[] args){
+    public static void main (String[] args) throws Exception {
         System.out.println("Test: Question 2");
         int[] ret = run(2000,"F","M");
         System.out.println("Solution for year 2000: "+ret);

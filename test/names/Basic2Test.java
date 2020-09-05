@@ -9,6 +9,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Basic2Test {
+    void Basic2Test(){
+        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+    }
+
 
     @Test
     void test1() throws Exception {

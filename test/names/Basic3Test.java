@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Basic3Test {
 
     @Test
-    void male(){
+    void male() throws Exception {
         int[] years = {3000,3004};
 
         Frequencies ans = Basic3.run(years,"M");
@@ -22,7 +22,7 @@ class Basic3Test {
     }
 
     @Test
-    void female(){
+    void female() throws Exception {
         int[] years = {3000,3004};
 
         Frequencies ans = Basic3.run(years,"F");
@@ -34,7 +34,7 @@ class Basic3Test {
     }
 
     @Test
-    void tieMale(){
+    void tieMale() throws Exception {
         int[] years = {3000,3003};
 
         Frequencies ans = Basic3.run(years,"M");

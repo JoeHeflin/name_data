@@ -13,7 +13,7 @@ class Test1Test {
      */
 
     @Test
-    void singleMostPopular(){
+    void singleMostPopular() throws Exception {
         NameArray f = new NameArray("F", 3001);
         NameArray m = new NameArray("M", 3001);
 
@@ -30,7 +30,7 @@ class Test1Test {
     }
 
     @Test
-    void multipleMostPopular(){
+    void multipleMostPopular() throws Exception {
         NameArray f = new NameArray("F", 3002);
         NameArray m = new NameArray("M", 3002);
 
@@ -49,7 +49,7 @@ class Test1Test {
     }
 
     @Test
-    void multipleMostPopularShuffled(){
+    void multipleMostPopularShuffled() throws Exception {
         NameArray f = new NameArray("F", 3000);
         NameArray m = new NameArray("M", 3000);
 

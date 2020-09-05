@@ -34,10 +34,10 @@ class Basic1Test {
     void presentAll() throws Exception {
         //int[] years = {3000,3003};
         List<Integer> actual = Basic1.run("MaryLou", "F");
-        int[] expected = {3,3,1,5};
+        int[] expected = {3,3,1,5,0,-1};
 
         for (int value:actual){
-            assertEquals(value,expected[actual.indexOf(value)]);
+            assertEquals(expected[actual.indexOf(value)],value);
         }
     }
 }

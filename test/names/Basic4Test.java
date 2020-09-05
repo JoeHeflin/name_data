@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Basic4Test {
 
     @Test
-    void test1(){
+    void test1() throws Exception {
         int[] years = {3000,3004};
         NameArray n = new NameArray("F",years);
         Stack<String> s = n.maxLetterFreq();
@@ -21,7 +21,7 @@ class Basic4Test {
     }
 
     @Test
-    void tieLetter(){
+    void tieLetter() throws Exception {
 
         int[] years = {3002,3002};
         NameArray n = new NameArray("M",years);
@@ -34,7 +34,7 @@ class Basic4Test {
     }
 
     @Test
-    void highFreqLowCount(){
+    void highFreqLowCount() throws Exception {
         int[] years = {3000,3005};
         NameArray n = new NameArray("F",years);
         Stack<String> s = n.maxLetterFreq();
