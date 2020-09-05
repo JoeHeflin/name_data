@@ -8,8 +8,6 @@ public class Frequencies {
     static int frequency;
     static Stack<String> names;
 
-//    public static void maxLetterFreq(NameArray)
-
     public static void maxNameFreq(int[] years, String gender){
         /*
         Use two hashmaps:
@@ -28,7 +26,6 @@ public class Frequencies {
                 if(name2freq.containsKey(name.name)){
                     freq = name2freq.get(name.name)+1;
                     name2freq.replace(name.name,freq);
-
                 }
                 else{
                     name2freq.put(name.name,freq);
@@ -44,7 +41,6 @@ public class Frequencies {
                 if(freq>=max){
                     max = freq;
                 }
-
             }
         }
         names = freq2name.get(max);

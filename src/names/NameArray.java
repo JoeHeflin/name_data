@@ -43,7 +43,6 @@ public class NameArray extends ArrayList{
 
 
     /**
-     *
      * @param gender of names to add to collection
      * @param yearRange start and end of the range of years to store names from, inclusive
      * @param newNameArray an array to pass that collects names after going through multiple files recursively
@@ -100,8 +99,6 @@ public class NameArray extends ArrayList{
     public void rankGenerator(){
         int prevCount = -1;
         int rank = -1;
-
-        //List<List<Name>> ranks = new ArrayList<List<Name>>();
 
         Collections.sort(nameArray, new SortByCount());
 
