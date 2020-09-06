@@ -64,10 +64,7 @@ public class NameArray extends ArrayList{
      */
     public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray) throws Exception { //,int[] years)
 
-//        int maxYear = -1;
-
         if(yearRange[0] == yearRange[1]+1){
-//            maxYearInData = maxYear;
             return newNameArray;
         }
 
