@@ -1,0 +1,13 @@
+MaryLou,F,58
+Helen,F,60
+Anna,F,60
+Margaret,F,59
+Ruth,F,5
+Jonny,M,850
+William,M,8
+James,M,900
+George,M,6
+Charles,M,9
+Robert,M,7
+Joseph,M,800
+Elijah,M,7
