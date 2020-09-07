@@ -19,7 +19,6 @@ public class Basic2 {
             System.out.println("Error: Name not found in year given");
             return null;
         }
-
         for(Name n: recentMale.nameArray){
             if(n.rank == rank) {
                 if (ret.size() < 1) {
@@ -42,7 +41,6 @@ public class Basic2 {
                 }
             }
         }
-
         return ret;
     }
 
@@ -56,28 +54,19 @@ public class Basic2 {
         recentFemale.rankGenerator();
 
         int rank = old.findRank(givenName);
-        if(rank < 1){
-            System.out.println("Error: Name not found in year given");
-            return null;
+        if (rank < 1) {
+            throw new Exception("Name not found in year given");
         }
-
-        for(Name n: recentMale.nameArray){
+        for (Name n : recentMale.nameArray) {
             if(n.rank == rank) {
                 ret.add(n.name + ", " + n.gender);
             }
         }
-
-        for(Name n: recentFemale.nameArray){
-            if(n.rank == rank) {
+        for (Name n : recentFemale.nameArray) {
+            if (n.rank == rank) {
                 ret.add(n.name + ", " + n.gender);
             }
         }
         return ret;
-    }
-
-    public static void main (String[] args) throws Exception {
-        System.out.println("Basic: Question 2");
-        List<List<String>> ret = run("David","M",2000);
-        System.out.println("Solution for year 2000: "+ret);
     }
 }

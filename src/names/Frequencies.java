@@ -13,26 +13,24 @@ public class Frequencies {
         HashMap<Integer, Stack<String>> freq2name = new HashMap<>();
         int max = 0;
 
-        for(String year:namesAtACertainRank){
+        for(String year:namesAtACertainRank) {
             String[] namesThisYear = year.split(", ");
-            for(String name:namesThisYear){
+            for(String name:namesThisYear) {
                 int freq = 1;
-                if(name2freq.containsKey(name)){
+                if(name2freq.containsKey(name)) {
                     freq = name2freq.get(name)+1;
                     name2freq.replace(name,freq);
-                }
-                else{
+                } else {
                     name2freq.put(name,freq);
                 }
-                if(freq2name.containsKey(freq)){
+                if(freq2name.containsKey(freq)) {
                     freq2name.get(freq).push(name);
-                }
-                else{
+                } else {
                     Stack<String> s = new Stack<>();
                     s.push(name);
                     freq2name.put(freq,s);
                 }
-                if(freq>=max){
+                if(freq>=max) {
                     max = freq;
                 }
             }
@@ -52,27 +50,25 @@ public class Frequencies {
         HashMap<Integer, Stack<String>> freq2name = new HashMap<>();
         int max = 0;
 
-        for(int year = years[0]; year <= years[1]; year++){
+        for (int year = years[0]; year <= years[1]; year++) {
             NameArray n = new NameArray(gender, year);
             List<Name> topNames = n.topRank();
-            for(Name name: topNames){
+            for (Name name : topNames) {
                 int freq = 1;
-                if(name2freq.containsKey(name.name)){
+                if (name2freq.containsKey(name.name)) {
                     freq = name2freq.get(name.name)+1;
                     name2freq.replace(name.name,freq);
-                }
-                else{
+                } else {
                     name2freq.put(name.name,freq);
                 }
-                if(freq2name.containsKey(freq)){
+                if (freq2name.containsKey(freq)) {
                     freq2name.get(freq).push(name.name);
-                }
-                else{
+                } else {
                     Stack<String> s = new Stack<>();
                     s.push(name.name);
                     freq2name.put(freq,s);
                 }
-                if(freq>=max){
+                if (freq >= max) {
                     max = freq;
                 }
             }

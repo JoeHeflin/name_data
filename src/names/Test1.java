@@ -10,13 +10,7 @@ public class Test1 {
         List<Name> fRank = f.topRank();
         List<Name> mRank = m.topRank();
 
-        List<Name>[] ret = new List[]{mRank, fRank};;
+        List<Name>[] ret = new List[]{mRank, fRank};
         return ret;
-    }
-
-    public static void main (String[] args) throws Exception {
-        System.out.println("Test: Question 1");
-        List<Name>[] ret = run(2000);
-        System.out.println("Solution for year 2000: "+ret);
     }
 }

@@ -14,12 +14,11 @@ public class Complete3 {
         oldYearData.rankGenerator();
         newYearData.rankGenerator();
 
-        for(Name name:oldYearData.nameArray){
+        for (Name name : oldYearData.nameArray) {
             int rankDiff = Math.abs(name.rank - newYearData.findRank(name.name));
-            if(rankDiff == maxRankDiffValue){
+            if (rankDiff == maxRankDiffValue) {
                 maxRankDiffNames.add(name.name);
-            }
-            else if(rankDiff > maxRankDiffValue){
+            } else if (rankDiff > maxRankDiffValue) {
                 maxRankDiffNames.clear();
                 maxRankDiffNames.add(name.name);
                 maxRankDiffValue = rankDiff;

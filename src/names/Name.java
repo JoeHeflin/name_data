@@ -1,8 +1,10 @@
 package names;
 
 class Name{
-    public String name, gender;
-    public int count,rank;
+    public String name;
+    public String gender;
+    public int count;
+    public int rank;
 
     public Name(String nameLine){
         String[] nameInfo = nameLine.split(",");

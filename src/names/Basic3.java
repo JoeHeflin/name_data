@@ -8,17 +8,4 @@ public class Basic3 {
         f.maxNameFreq(years, gender);
         return f;
     }
-
-    public static void main (String[] args) throws Exception {
-        System.out.println("Basic: Question 3");
-        Main.setDataPath("testdata/");
-        int[] years = {3000,3004};
-        Frequencies f = run(years,"M");
-        Stack<String> stack = f.names;
-        int frequency = f.frequency;
-        System.out.println(frequency);
-        while(!stack.empty()){
-            System.out.println(stack.pop());
-        }
-    }
 }

@@ -7,7 +7,6 @@ public class Complete2 {
 
         int oldRank = oldYearData.findRank(name);
         int newRank = newYearData.findRank(name);
-
         return oldRank-newRank;
     }
 }
