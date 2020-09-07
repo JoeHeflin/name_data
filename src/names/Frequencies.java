@@ -5,8 +5,42 @@ import java.util.List;
 import java.util.Stack;
 
 public class Frequencies {
-    static int frequency;
-    static Stack<String> names;
+    public static int frequency;
+    public static Stack<String> names;
+
+    public static void maxNameAtRank(List<String> namesAtACertainRank){
+        HashMap<String, Integer> name2freq = new HashMap<>();
+        HashMap<Integer, Stack<String>> freq2name = new HashMap<>();
+        int max = 0;
+
+        for(String year:namesAtACertainRank){
+            String[] namesThisYear = year.split(", ");
+            for(String name:namesThisYear){
+                int freq = 1;
+                if(name2freq.containsKey(name)){
+                    freq = name2freq.get(name)+1;
+                    name2freq.replace(name,freq);
+                }
+                else{
+                    name2freq.put(name,freq);
+                }
+                if(freq2name.containsKey(freq)){
+                    freq2name.get(freq).push(name);
+                }
+                else{
+                    Stack<String> s = new Stack<>();
+                    s.push(name);
+                    freq2name.put(freq,s);
+                }
+                if(freq>=max){
+                    max = freq;
+                }
+            }
+
+        }
+        names = freq2name.get(max);
+        frequency = max;
+    }
 
     public static void maxNameFreq(int[] years, String gender) throws Exception {
         /*
