@@ -11,7 +11,7 @@ public class Basic3 {
 
     public static void main (String[] args) throws Exception {
         System.out.println("Basic: Question 3");
-        NameArray.setDataPath("testdata/");
+        Main.setDataPath("testdata/");
         int[] years = {3000,3004};
         Frequencies f = run(years,"M");
         Stack<String> stack = f.names;

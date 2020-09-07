@@ -27,7 +27,7 @@ class Complete5Test {
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("James"));
         for(String name:actual){
-                        System.out.println(name);
+//                        System.out.println(name);
             assertEquals(0,name.compareTo(expected.get(actual.indexOf(name))));
         }
     }
@@ -38,6 +38,7 @@ class Complete5Test {
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Jonny"));
         for(String name:actual){
+                                    System.out.println(name);
             assertEquals(0,name.compareTo(expected.get(actual.indexOf(name))));
         }
     }

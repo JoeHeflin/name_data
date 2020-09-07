@@ -11,7 +11,7 @@ import java.util.*;
  * Functions to perform on a collection of Name objects
  */
 public class NameArray extends ArrayList {
-    public static String dataPath = "testdata/";
+//    public static String dataPath = "testdata/";
     public static final String FILE_PREFIX = "yob";
     public static final String FILE_TYPE = ".txt";
     public List<Name> nameArray;
@@ -33,9 +33,9 @@ public class NameArray extends ArrayList {
         nameArray = arrayGenerator(gender, yearRange, array);
     }
 
-    public static void setDataPath(String path){
-        dataPath = path;
-    }
+//    public static void setDataPath(String path){
+//        dataPath = path;
+//    }
     /**
      * @param gender of names to add to collection
      * @param yearRange start and end of the range of years to store names from, inclusive
@@ -47,7 +47,7 @@ public class NameArray extends ArrayList {
         for(int year = yearRange[0];year<=yearRange[1];year++) {
             String yearString = Integer.toString(yearRange[0]);
 
-            String fileName = dataPath + FILE_PREFIX + yearString + FILE_TYPE;
+            String fileName = Main.dataPath + FILE_PREFIX + yearString + FILE_TYPE;
             try {
                 URL url = new URL(fileName);
 
@@ -142,97 +142,97 @@ public class NameArray extends ArrayList {
         return ret;
     }
 
-    /**
-     * @return most recent year in data set
-     */
+//    /**
+//     * @return most recent year in data set
+//     */
 
-    public static int findMaxYear() {
-        int max = 0;
-        try {
-            URL url = new URL(dataPath);
+//    public static int findMaxYear() {
+//        int max = 0;
+//        try {
+//            URL url = new URL(dataPath);
+//
+//            InputStreamReader stream = new InputStreamReader(url.openStream());
+//            BufferedReader br = new BufferedReader(stream);
+//            String line;
+//
+//            while ((line = br.readLine()) != null) {
+//                if (line.contains("yob")) {
+//                    line = line.replaceAll("(.*?)yob", "");
+//                    line = line.replaceAll("\\.txt(.*)", "");
+//
+//                    int year = Integer.parseInt(line);
+//
+//                    if (year > max) {
+//                        max = year;
+//                    }
+//                }
+//            }
+//        } catch (Exception e) {
+//            try {
+//                File dir = new File(dataPath);
+//                File[] files = dir.listFiles();
+//                for (File file : files) {
+//                    String name = file.getName();
+//                    name = name.replaceAll("[^\\d]", "");
+//                    int year = Integer.parseInt(name);
+//                    if (year > max) {
+//                        max = year;
+//                    }
+//                }
+//
+//            } catch (Exception e1) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return max;
+//    }
 
-            InputStreamReader stream = new InputStreamReader(url.openStream());
-            BufferedReader br = new BufferedReader(stream);
-            String line;
+//    /**
+//     * @return earliest year in data set
+//     */
+//    public static int findMinYear() throws Exception {
+//        int min = -1;
+//
+//        try{
+//            URL url = new URL(dataPath);
+//
+//            InputStreamReader stream = new InputStreamReader(url.openStream());
+//            BufferedReader br = new BufferedReader(stream);
+//            String line;
+//
+//            while((line = br.readLine()) != null){
+//                if(line.contains("yob")) {
+//                    line = line.replaceAll("(.*?)yob", "");
+//                    line = line.replaceAll("\\.txt(.*)", "");
+//
+//                    int year = Integer.parseInt(line);
+//
+//                    if(year < min || year < 0){
+//                        min = year;
+//                    }
+//                }
+//            }
+//        } catch(Exception e){
+//            try {
+//                File dir = new File(dataPath);
+//                File[] files = dir.listFiles();
+//                for(File file:files) {
+//                    String name = file.getName();
+//                    name = name.replaceAll("[^\\d]","");
+//                    int year = Integer.parseInt(name);
+//                    if(year < min || min < 0){
+//                        min = year;
+//                    }
+//                }
+//
+//            } catch (Exception e1) { e.printStackTrace();}
+//        }
+//        return min;
+//    }
 
-            while ((line = br.readLine()) != null) {
-                if (line.contains("yob")) {
-                    line = line.replaceAll("(.*?)yob", "");
-                    line = line.replaceAll("\\.txt(.*)", "");
-
-                    int year = Integer.parseInt(line);
-
-                    if (year > max) {
-                        max = year;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            try {
-                File dir = new File(dataPath);
-                File[] files = dir.listFiles();
-                for (File file : files) {
-                    String name = file.getName();
-                    name = name.replaceAll("[^\\d]", "");
-                    int year = Integer.parseInt(name);
-                    if (year > max) {
-                        max = year;
-                    }
-                }
-
-            } catch (Exception e1) {
-                e.printStackTrace();
-            }
-        }
-        return max;
-    }
-
-    /**
-     * @return earliest year in data set
-     */
-    public static int findMinYear() throws Exception {
-        int min = -1;
-
-        try{
-            URL url = new URL(dataPath);
-
-            InputStreamReader stream = new InputStreamReader(url.openStream());
-            BufferedReader br = new BufferedReader(stream);
-            String line;
-
-            while((line = br.readLine()) != null){
-                if(line.contains("yob")) {
-                    line = line.replaceAll("(.*?)yob", "");
-                    line = line.replaceAll("\\.txt(.*)", "");
-
-                    int year = Integer.parseInt(line);
-
-                    if(year < min || year < 0){
-                        min = year;
-                    }
-                }
-            }
-        } catch(Exception e){
-            try {
-                File dir = new File(dataPath);
-                File[] files = dir.listFiles();
-                for(File file:files) {
-                    String name = file.getName();
-                    name = name.replaceAll("[^\\d]","");
-                    int year = Integer.parseInt(name);
-                    if(year < min || min < 0){
-                        min = year;
-                    }
-                }
-
-            } catch (Exception e1) { e.printStackTrace();}
-        }
-        return min;
-    }
-
-    /**
-     * @return a collection of names beginning with the most common letter in collection
-     */
+//    /**
+//     * @return a collection of names beginning with the most common letter in collection
+//     */
 //    public Stack<String> maxLetterFreq(){
 //        int max = 0;
 //        Character maxC = 'z';

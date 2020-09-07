@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Complete6Test {
     @Test
     void notPresentSomeYears(){
-        assertThrows(Exception.class,()->{Complete6.run("George","M",2);});
+        assertThrows(Exception.class,()->{Complete6.run("None","M",2);});
     }
 
     @Test

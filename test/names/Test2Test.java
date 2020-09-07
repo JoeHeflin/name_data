@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Test2Test {
     void Test2Test(){
-        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+        Main.setDataPath(Main.LOCAL_TEST_DATA);
     }
 
     @Test

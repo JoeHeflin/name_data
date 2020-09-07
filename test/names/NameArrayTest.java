@@ -11,7 +11,7 @@ class NameArrayTest {
     @Test
     void arrayGen() throws Exception {
         int[] years = {1900,1903};
-        NameArray.setDataPath(Main.REMOTE_TEST_DATA);
+        Main.setDataPath(Main.REMOTE_TEST_DATA);
         NameArray n = new NameArray("M",years);
         n.rankGenerator();
         for(Name name:n.nameArray){
@@ -21,24 +21,24 @@ class NameArrayTest {
 
     @Test
     void findMaxYear() throws Exception {
-        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+        Main.setDataPath(Main.LOCAL_TEST_DATA);
 
         NameArray n = new NameArray(3000);
-        int maxYear = n.findMaxYear();
-        assertEquals(3005, maxYear);
+        int maxYear = Main.findMaxYear();
+        assertEquals(3012, maxYear);
     }
 
     @Test
     void findMinYear() throws Exception {
-        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+        Main.setDataPath(Main.LOCAL_TEST_DATA);
         NameArray n = new NameArray(3000);
-        int minYear = n.findMinYear();
+        int minYear = Main.findMinYear();
         assertEquals(minYear,3000);
     }
 
     @Test
     void rankGenerator() throws Exception {
-        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+        Main.setDataPath(Main.LOCAL_TEST_DATA);
         NameArray n = new NameArray(3000);
         n.rankGenerator();
 

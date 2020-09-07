@@ -6,7 +6,7 @@ import java.util.List;
 public class Basic2 {
     public static List<List<String>> run(String givenName,String gender,int year) throws Exception {
         List<List<String>> ret = new ArrayList<List<String>>();
-        int mostRecentYear = NameArray.findMaxYear();
+        int mostRecentYear = Main.findMaxYear();
         NameArray old = new NameArray(gender, year);
         NameArray recentMale = new NameArray("M",mostRecentYear);
         NameArray recentFemale = new NameArray("F",mostRecentYear);
@@ -48,7 +48,6 @@ public class Basic2 {
 
     public static List<String> run(String givenName,String gender,int year,int mostRecentYear) throws Exception {
         List<String> ret = new ArrayList<String>();
-       // int mostRecentYear = NameArray.findMaxYear();
         NameArray old = new NameArray(gender, year);
         NameArray recentMale = new NameArray("M",mostRecentYear);
         NameArray recentFemale = new NameArray("F",mostRecentYear);

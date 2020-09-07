@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Basic2Test {
     void Basic2Test(){
-        NameArray.setDataPath(Main.LOCAL_TEST_DATA);
+        Main.setDataPath(Main.LOCAL_TEST_DATA);
     }
 
 

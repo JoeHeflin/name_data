@@ -80,6 +80,10 @@ public class Frequencies {
         names = freq2name.get(max);
         frequency = max;
     }
+
+    /**
+     * @return a collection of names beginning with the most common letter in collection
+     */
     public void maxLetterFreq(List<Name> nameArray){
         int max = 0;
         Character maxC = 'z';

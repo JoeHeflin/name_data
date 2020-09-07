@@ -10,3 +10,4 @@ Charles,M,9
 Robert,M,7
 Joseph,M,800
 Elijah,M,7
+George,M,6
