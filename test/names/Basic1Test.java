@@ -11,7 +11,7 @@ class Basic1Test {
     @Test
     void nameNotPresentAll() throws Exception {
         //int[] years = {3000,3003};
-        List<Integer> actual = Basic1.run("None", "M");
+        List<Integer> actual = Basic1.ranksInDataset("None", "M");
         int[] expected = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
         int index = 0;
@@ -24,7 +24,7 @@ class Basic1Test {
     @Test
     void notPresentSome() throws Exception {
         //int[] years = {3000,3002};
-        List<Integer> actual = Basic1.run("Elijah", "M");
+        List<Integer> actual = Basic1.ranksInDataset("Elijah", "M");
         int[] expected = {6,8,-1,-1,-1,-1,8,6,6,6,6,6,6};
 
         int index = 0;
@@ -37,7 +37,7 @@ class Basic1Test {
     @Test
     void presentAll() throws Exception {
         //int[] years = {3000,3003};
-        List<Integer> actual = Basic1.run("MaryLou", "F");
+        List<Integer> actual = Basic1.ranksInDataset("MaryLou", "F");
         int[] expected = {3,3,1,5,5,1,2,4,4,4,4,4,4};
 
         int index = 0;

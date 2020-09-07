@@ -14,7 +14,7 @@ class Basic4Test {
 //        NameArray n = new NameArray("F",years);
 //        Stack<String> s = n.maxLetterFreq();
 //        s.sort(String::compareTo);
-        Stack<String> s = Basic4.run(years,"F");
+        Stack<String> s = Basic4.findNamesWithMostCommonLetter(years,"F");
 
         assertEquals(0, "MaryLou".compareTo(s.pop()));
         assertEquals(0, "Margaret".compareTo(s.pop()));
@@ -28,7 +28,7 @@ class Basic4Test {
 //        NameArray n = new NameArray("M",years);
 //        Stack<String> s = n.maxLetterFreq();
 //        s.sort(String::compareTo);
-        Stack<String> s = Basic4.run(years,"M");
+        Stack<String> s = Basic4.findNamesWithMostCommonLetter(years,"M");
 
 
         //System.out.println(s.pop());
@@ -42,7 +42,7 @@ class Basic4Test {
 //        NameArray n = new NameArray("F",years);
 //        Stack<String> s = n.maxLetterFreq();
 //        s.sort(String::compareTo);
-        Stack<String> s = Basic4.run(years,"F");
+        Stack<String> s = Basic4.findNamesWithMostCommonLetter(years,"F");
 
 
         assertEquals(0, "MaryLou".compareTo(s.pop()));

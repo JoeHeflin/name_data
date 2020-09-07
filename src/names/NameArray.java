@@ -67,6 +67,7 @@ public class NameArray extends ArrayList {
                         }
                     }
                 } catch (Exception e1) {
+                    e1.printStackTrace();
                     throw new Exception("Invalid dataPath: " + fileName + ", see README.md");
                 }
             }

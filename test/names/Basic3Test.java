@@ -12,7 +12,7 @@ class Basic3Test {
     void male() throws Exception {
         int[] years = {3000,3004};
 
-        Frequencies ans = Basic3.run(years,"M");
+        Frequencies ans = Basic3.findMostTopRanks(years,"M");
         Stack<String> s = ans.names;
         int f = ans.frequency;
 
@@ -25,7 +25,7 @@ class Basic3Test {
     void female() throws Exception {
         int[] years = {3000,3004};
 
-        Frequencies ans = Basic3.run(years,"F");
+        Frequencies ans = Basic3.findMostTopRanks(years,"F");
         Stack<String> s = ans.names;
         int f = ans.frequency;
 
@@ -37,7 +37,7 @@ class Basic3Test {
     void tieMale() throws Exception {
         int[] years = {3000,3003};
 
-        Frequencies ans = Basic3.run(years,"M");
+        Frequencies ans = Basic3.findMostTopRanks(years,"M");
         Stack<String> s = ans.names;
         int f = ans.frequency;
 

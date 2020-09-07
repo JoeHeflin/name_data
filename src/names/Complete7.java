@@ -5,7 +5,7 @@ import java.util.List;
 
 
 /**
- * This method sucks
+ * This method sucks, consider moving to Main, refactoring complete8, maxnamefreq, and maxnameatrank
  */
 public class Complete7 {
     public static List<String> run(int[] years, String gender, int rank) throws Exception {
