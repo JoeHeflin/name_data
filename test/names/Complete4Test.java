@@ -15,7 +15,7 @@ class Complete4Test {
     @Test
     void normalCase() throws Exception {
         int[] years = {3000,3004};
-        int avgRank = Complete4.run("George","M",years);
+        float avgRank = Complete4.run("George","M",years);
         assertEquals(3,avgRank);
     }
 

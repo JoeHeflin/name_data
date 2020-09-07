@@ -64,44 +64,45 @@ public class NameArray extends ArrayList{
      */
     public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray) throws Exception { //,int[] years)
 
-        if(yearRange[0] == yearRange[1]+1){
-            return newNameArray;
-        }
+//        if(yearRange[0] == yearRange[1]+1){
+//            return newNameArray;
+//        }
+        for(int year = yearRange[0];year<=yearRange[1];year++) {
+            String yearString = Integer.toString(yearRange[0]);
 
-        String year = Integer.toString(yearRange[0]);
-
-        String fileName = dataPath + FILE_PREFIX + year + FILE_TYPE;
-        try{
-            URL url = new URL(fileName);
-
-            InputStreamReader stream = new InputStreamReader(url.openStream());
-
-            BufferedReader br = new BufferedReader(stream);
-            String line;
-            while((line = br.readLine()) != null){
-                Name n = new Name(line);
-                if(n.gender.compareTo(gender)==0 || gender.compareTo("N")==0){
-                    newNameArray.add(n);
-                }
-            }
-        }
-        catch (Exception e){
+            String fileName = dataPath + FILE_PREFIX + yearString + FILE_TYPE;
             try {
-                File localStream = new File(fileName);
-                BufferedReader br = new BufferedReader(new FileReader(localStream));
+                URL url = new URL(fileName);
+
+                InputStreamReader stream = new InputStreamReader(url.openStream());
+
+                BufferedReader br = new BufferedReader(stream);
                 String line;
-                while((line = br.readLine()) != null){
+                while ((line = br.readLine()) != null) {
                     Name n = new Name(line);
-                    if(n.gender.compareTo(gender)==0 || gender.compareTo("N")==0){
+                    if (n.gender.compareTo(gender) == 0 || gender.compareTo("N") == 0) {
                         newNameArray.add(n);
                     }
                 }
-            } catch (Exception e1) {
-                throw new Exception("Invalid dataPath: "+fileName+", see README.md");
+            } catch (Exception e) {
+                try {
+                    File localStream = new File(fileName);
+                    BufferedReader br = new BufferedReader(new FileReader(localStream));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        Name n = new Name(line);
+                        if (n.gender.compareTo(gender) == 0 || gender.compareTo("N") == 0) {
+                            newNameArray.add(n);
+                        }
+                    }
+                } catch (Exception e1) {
+                    throw new Exception("Invalid dataPath: " + fileName + ", see README.md");
+                }
             }
         }
-        yearRange[0]+=1;
-        return arrayGenerator(gender, yearRange, newNameArray);
+        //yearRange[0]+=1;
+        //return arrayGenerator(gender, yearRange, newNameArray);
+        return newNameArray;
     }
 
 

@@ -11,28 +11,30 @@ import static org.junit.jupiter.api.Assertions.*;
 class Complete5Test {
 
     @Test
-    void moreThanOneName(){
-        int[] years = {3100,3112};
+    void moreThanOneName() throws Exception {
+        int[] years = {3100,3102};
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Charles","James","Jonny"));
         for(String name:actual){
+//            System.out.println(name);
             assertEquals(0,name.compareTo(expected.get(actual.indexOf(name))));
         }
     }
 
     @Test
-    void normalCase(){
-        int[] years = {3100,3113};
+    void normalCase() throws Exception {
+        int[] years = {3100,3103};
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("James"));
         for(String name:actual){
+                        System.out.println(name);
             assertEquals(0,name.compareTo(expected.get(actual.indexOf(name))));
         }
     }
 
     @Test
-    void lastYearInRangeChangesAnswer(){
-        int[] years = {3100,3114};
+    void lastYearInRangeChangesAnswer() throws Exception {
+        int[] years = {3100,3104};
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Jonny"));
         for(String name:actual){
