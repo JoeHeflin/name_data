@@ -1,6 +1,5 @@
 package names;
 
-import java.util.List;
 import java.util.Stack;
 
 public class Basic3 {
@@ -14,7 +13,6 @@ public class Basic3 {
         System.out.println("Basic: Question 3");
         NameArray.setDataPath("testdata/");
         int[] years = {3000,3004};
-        //Frequencies f = new Frequencies();
         Frequencies f = run(years,"M");
         Stack<String> stack = f.names;
         int frequency = f.frequency;

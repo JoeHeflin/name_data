@@ -1,7 +1,5 @@
 package names;
 
-import java.util.List;
-
 public class Test2 {
     public static int[] run(int year, String gender, String letter) throws Exception {
         int [] ans = {0,0};
@@ -13,7 +11,8 @@ public class Test2 {
                 ans[1] += name.count;
             }
         }
-        return ans;    }
+        return ans;
+    }
 
     public static void main (String[] args) throws Exception {
         System.out.println("Test: Question 2");

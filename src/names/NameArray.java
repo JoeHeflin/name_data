@@ -4,37 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Functions to perform on a collection of Name objects
  */
-public class NameArray extends ArrayList{
+public class NameArray extends ArrayList {
     public static String dataPath = "testdata/";
     public static final String FILE_PREFIX = "yob";
     public static final String FILE_TYPE = ".txt";
     public List<Name> nameArray;
-//    public int maxYearInData = -1;
-
-//    public NameArray() throws Exception {
-//        String gender = "N";
-//        int[] yearRange = {1900,1900};
-//        List<Name> array = new ArrayList<Name>();
-//        nameArray = arrayGenerator(gender, yearRange, array);
-//    }
-//
-//    public NameArray(String gender) throws Exception {
-//        int[] yearRange = {1900,1900};
-//        List<Name> array = new ArrayList<Name>();
-//        nameArray = arrayGenerator(gender, yearRange, array);
-//    }
 
     public NameArray(int year) throws Exception {
         int[] yearRange = {year,year};
@@ -64,9 +44,6 @@ public class NameArray extends ArrayList{
      */
     public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray) throws Exception { //,int[] years)
 
-//        if(yearRange[0] == yearRange[1]+1){
-//            return newNameArray;
-//        }
         for(int year = yearRange[0];year<=yearRange[1];year++) {
             String yearString = Integer.toString(yearRange[0]);
 
@@ -100,8 +77,6 @@ public class NameArray extends ArrayList{
                 }
             }
         }
-        //yearRange[0]+=1;
-        //return arrayGenerator(gender, yearRange, newNameArray);
         return newNameArray;
     }
 
@@ -241,10 +216,6 @@ public class NameArray extends ArrayList{
             try {
                 File dir = new File(dataPath);
                 File[] files = dir.listFiles();
-//                String firstName = files[0].getName();
-//                firstName = firstName.replaceAll("[^\\d]","");
-//                int firstYear = Integer.parseInt(firstName);
-//                min = firstYear;
                 for(File file:files) {
                     String name = file.getName();
                     name = name.replaceAll("[^\\d]","");
@@ -262,36 +233,36 @@ public class NameArray extends ArrayList{
     /**
      * @return a collection of names beginning with the most common letter in collection
      */
-    public  Stack<String> maxLetterFreq(){
-        int max = 0;
-        Character maxC = 'z';
-
-        HashMap<Character, Stack<String>> letter2names = new HashMap<>();
-        HashMap<Character, Integer> letter2count = new HashMap<>();
-
-        for(Name name:nameArray){
-
-            letter2names.putIfAbsent(name.name.charAt(0),new Stack<>());
-            letter2count.putIfAbsent(name.name.charAt(0),0);
-
-            int currentCount = letter2count.get(name.name.charAt(0))+name.count;
-            letter2count.put(name.name.charAt(0), currentCount);
-
-            Stack<String> stack = letter2names.get(name.name.charAt(0));
-            if(!stack.contains(name.name)){
-                stack.push(name.name);
-            }
-        }
-        for(Character c:letter2count.keySet()){
-            int total = letter2count.get(c);
-
-            if(total >= max){
-                if(total > max || c < maxC){
-                    maxC = c;
-                }
-                max = total;
-            }
-        }
-        return letter2names.get(maxC);
-    }
+//    public Stack<String> maxLetterFreq(){
+//        int max = 0;
+//        Character maxC = 'z';
+//
+//        HashMap<Character, Stack<String>> letter2names = new HashMap<>();
+//        HashMap<Character, Integer> letter2count = new HashMap<>();
+//
+//        for(Name name:nameArray){
+//
+//            letter2names.putIfAbsent(name.name.charAt(0),new Stack<>());
+//            letter2count.putIfAbsent(name.name.charAt(0),0);
+//
+//            int currentCount = letter2count.get(name.name.charAt(0))+name.count;
+//            letter2count.put(name.name.charAt(0), currentCount);
+//
+//            Stack<String> stack = letter2names.get(name.name.charAt(0));
+//            if(!stack.contains(name.name)){
+//                stack.push(name.name);
+//            }
+//        }
+//        for(Character c:letter2count.keySet()){
+//            int total = letter2count.get(c);
+//
+//            if(total >= max){
+//                if(total > max || c < maxC){
+//                    maxC = c;
+//                }
+//                max = total;
+//            }
+//        }
+//        return letter2names.get(maxC);
+//    }
 }

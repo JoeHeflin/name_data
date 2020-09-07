@@ -2,7 +2,6 @@ package names;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class Complete8 {
     public static int count;

@@ -27,7 +27,6 @@ class Complete7Test {
         List<String> expectedNames = new ArrayList<>(Arrays.asList(
                 "Helen, Margaret","Margaret","Anna, Helen, MaryLou","Margaret","Margaret"));
         for(String year:actualNames){
-            //System.out.println(year);
             assertEquals(0,year.compareTo(expectedNames.get(actualNames.indexOf(year))));
         }
     }

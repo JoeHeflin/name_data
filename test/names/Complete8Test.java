@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +16,7 @@ class Complete8Test {
                 Complete8 c = new Complete8();
                 Complete8.run(years,"F",5);
                 List<String> actualNames = c.names;
-                List<String> expectedNames = new ArrayList<>(Arrays.asList("Ruth"));//,"Ruth","Ruth","MaryLou","MaryLou"));
+                List<String> expectedNames = new ArrayList<>(Arrays.asList("Ruth"));
                 for(String year:actualNames){
                         assertEquals(0,year.compareTo(expectedNames.get(actualNames.indexOf(year))));
                 }
