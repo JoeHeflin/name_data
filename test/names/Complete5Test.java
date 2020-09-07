@@ -12,7 +12,7 @@ class Complete5Test {
 
     @Test
     void moreThanOneName() throws Exception {
-        int[] years = {3100,3102};
+        int[] years = {3008,3010};
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Charles","James","Jonny"));
         for(String name:actual){
@@ -23,7 +23,7 @@ class Complete5Test {
 
     @Test
     void normalCase() throws Exception {
-        int[] years = {3100,3103};
+        int[] years = {3008,3011};
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("James"));
         for(String name:actual){
@@ -34,7 +34,7 @@ class Complete5Test {
 
     @Test
     void lastYearInRangeChangesAnswer() throws Exception {
-        int[] years = {3100,3104};
+        int[] years = {3008,3012};
         List<String> actual = Complete5.run(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Jonny"));
         for(String name:actual){

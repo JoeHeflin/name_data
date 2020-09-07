@@ -6,7 +6,6 @@ Ruth,F,5
 Jonny,M,900
 William,M,8
 James,M,9
-George,M,6
 Charles,M,9
 Robert,M,7
 Joseph,M,800
