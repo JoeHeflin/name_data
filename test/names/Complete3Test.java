@@ -40,4 +40,11 @@ class Complete3Test {
             assertEquals(0, name.compareTo(expected.get(actual.indexOf(name))));
         }
     }
+
+    @Test
+    void invalidYearRange() {
+        int[] years = {3004,3003};
+        assertThrows(Exception.class, ()->{Complete3.maxRankDiff(years, "M");});
+
+    }
 }

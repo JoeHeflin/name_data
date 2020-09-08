@@ -17,7 +17,9 @@ public class Complete3 {
     public static List<String> maxRankDiff(int[] years, String gender) throws Exception {
         int maxRankDiffValue = 0;
         List<String> maxRankDiffNames = new ArrayList<>();
-
+        if (years[0] >= years[1]) {
+            throw new Exception("Invalid years");
+        }
         NameArray oldYearData = new NameArray(gender, years[0]);
         NameArray newYearData = new NameArray(gender, years[1]);
 
