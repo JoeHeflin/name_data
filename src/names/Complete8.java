@@ -4,8 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Complete8 {
-    public static int count;
-    public static List<String> names;
+    private static int count;
+    private static List<String> names;
+
+    public static List<String> getNames() {
+        return names;
+    }
+
+    public static int getCount() {
+        return count;
+    }
 
     /**
      * Finds most common name at a given rank over a range of years
@@ -18,8 +26,8 @@ public class Complete8 {
         List<String> namesAtRank = Complete7.namesAtRank(years, gender, rank);
         Frequencies f = new Frequencies();
         f.maxNameAtRank(namesAtRank);
-        count = f.frequency;
-        names = new ArrayList<>(f.names);
+        count = f.getFrequency();
+        names = new ArrayList<>(f.getNames());
         names.sort(String::compareTo);
     }
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Test1 {
     public static List<Name>[] run(int year) throws Exception {
-        NameArray f = new NameArray("F", 3001);
-        NameArray m = new NameArray("M", 3001);
+        NameArray f = new NameArray("F", year);
+        NameArray m = new NameArray("M", year);
 
         List<Name> fRank = f.topRank();
         List<Name> mRank = m.topRank();

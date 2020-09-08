@@ -8,10 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Test1Test {
 
-    /*
-    Make sure all files are unsorted
-     */
-
     @Test
     void singleMostPopular() throws Exception {
         NameArray f = new NameArray("F", 3001);
@@ -21,11 +17,10 @@ class Test1Test {
         List<Name> mRank = m.topRank();
 
         for (Name name:mRank){
-            //System.out.println(name);
-            assertEquals(name.name.compareTo("George"),0);
+            assertEquals(name.getName().compareTo("George"),0);
         }
         for (Name name:fRank){
-            assertEquals(name.name.compareTo("Margaret"),0);
+            assertEquals(name.getName().compareTo("Margaret"),0);
         }
     }
 
@@ -41,10 +36,10 @@ class Test1Test {
         String[] solM = {"Jonny","William"};
 
         for (Name name:mRank){
-            assertEquals(name.name.compareTo(solM[mRank.indexOf(name)]),0);
+            assertEquals(name.getName().compareTo(solM[mRank.indexOf(name)]),0);
         }
         for (Name name:fRank){
-            assertEquals(name.name.compareTo(solF[fRank.indexOf(name)]),0);
+            assertEquals(name.getName().compareTo(solF[fRank.indexOf(name)]),0);
         }
     }
 
@@ -60,10 +55,10 @@ class Test1Test {
         String[] solM = {"Jonny","James","Charles"};
 
         for (Name name:mRank){
-            assertEquals(0, name.name.compareTo(solM[mRank.indexOf(name)]));
+            assertEquals(0, name.getName().compareTo(solM[mRank.indexOf(name)]));
         }
         for (Name name:fRank){
-            assertEquals(0, name.name.compareTo(solF[fRank.indexOf(name)]));
+            assertEquals(0, name.getName().compareTo(solF[fRank.indexOf(name)]));
         }
     }
 

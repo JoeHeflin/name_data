@@ -5,8 +5,16 @@ import java.util.List;
 import java.util.Stack;
 
 public class Frequencies {
-    public static int frequency;
-    public static Stack<String> names;
+    private static int frequency;
+    private static Stack<String> names;
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public Stack<String> getNames() {
+        return names;
+    }
 
     public static void maxNameAtRank(List<String> namesAtACertainRank){
         HashMap<String, Integer> name2freq = new HashMap<>();
@@ -55,17 +63,17 @@ public class Frequencies {
             List<Name> topNames = n.topRank();
             for (Name name : topNames) {
                 int freq = 1;
-                if (name2freq.containsKey(name.name)) {
-                    freq = name2freq.get(name.name)+1;
-                    name2freq.replace(name.name,freq);
+                if (name2freq.containsKey(name.getName())) {
+                    freq = name2freq.get(name.getName())+1;
+                    name2freq.replace(name.getName(),freq);
                 } else {
-                    name2freq.put(name.name,freq);
+                    name2freq.put(name.getName(),freq);
                 }
                 if (freq2name.containsKey(freq)) {
-                    freq2name.get(freq).push(name.name);
+                    freq2name.get(freq).push(name.getName());
                 } else {
                     Stack<String> s = new Stack<>();
-                    s.push(name.name);
+                    s.push(name.getName());
                     freq2name.put(freq,s);
                 }
                 if (freq >= max) {
@@ -89,15 +97,15 @@ public class Frequencies {
 
         for(Name name:nameArray){
 
-            letter2names.putIfAbsent(name.name.charAt(0),new Stack<>());
-            letter2count.putIfAbsent(name.name.charAt(0),0);
+            letter2names.putIfAbsent(name.getName().charAt(0),new Stack<>());
+            letter2count.putIfAbsent(name.getName().charAt(0),0);
 
-            int currentCount = letter2count.get(name.name.charAt(0))+name.count;
-            letter2count.put(name.name.charAt(0), currentCount);
+            int currentCount = letter2count.get(name.getName().charAt(0))+name.getCount();
+            letter2count.put(name.getName().charAt(0), currentCount);
 
-            Stack<String> stack = letter2names.get(name.name.charAt(0));
-            if(!stack.contains(name.name)){
-                stack.push(name.name);
+            Stack<String> stack = letter2names.get(name.getName().charAt(0));
+            if(!stack.contains(name.getName())){
+                stack.push(name.getName());
             }
         }
         for(Character c:letter2count.keySet()){

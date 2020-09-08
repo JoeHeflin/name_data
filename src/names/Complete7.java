@@ -23,9 +23,9 @@ public class Complete7 {
             List<String> namesPerYearList = new ArrayList<>();
             NameArray n = new NameArray(gender,year);
             n.rankGenerator();
-            for (Name name:n.nameArray) {
-                if (name.rank == rank) {
-                    namesPerYearList.add(name.name);
+            for (Name name:n.getNameArray()) {
+                if (name.getRank() == rank) {
+                    namesPerYearList.add(name.getName());
                 }
             }
             namesPerYearList.sort(String::compareTo);

@@ -30,14 +30,14 @@ public class Basic2 {
         if (rank < 1) {
             throw new Exception("Name not found in year given");
         }
-        for (Name n : recentMale.nameArray) {
-            if(n.rank == rank) {
-                ret.add(n.name + ", " + n.gender);
+        for (Name n : recentMale.getNameArray()) {
+            if(n.getRank() == rank) {
+                ret.add(n.getName() + ", " + n.getGender());
             }
         }
-        for (Name n : recentFemale.nameArray) {
-            if (n.rank == rank) {
-                ret.add(n.name + ", " + n.gender);
+        for (Name n : recentFemale.getNameArray()) {
+            if (n.getRank() == rank) {
+                ret.add(n.getName() + ", " + n.getGender());
             }
         }
         ret.sort(String::compareTo);

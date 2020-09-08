@@ -1,5 +1,6 @@
 package names;
 
+import javax.naming.NameNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +24,18 @@ public class Complete3 {
         oldYearData.rankGenerator();
         newYearData.rankGenerator();
 
-        for (Name name : oldYearData.nameArray) {
-            int rankDiff = Math.abs(name.rank - newYearData.findRank(name.name));
+        for (Name name : oldYearData.getNameArray()) {
+            int rankDiff;
+            try {
+                rankDiff = Math.abs(name.getRank() - newYearData.findRank(name.getName()));
+            } catch (Exception e) {
+                rankDiff = Math.abs(name.getRank() - (oldYearData.size() + 1));
+            }
             if (rankDiff == maxRankDiffValue) {
-                maxRankDiffNames.add(name.name);
+                maxRankDiffNames.add(name.getName());
             } else if (rankDiff > maxRankDiffValue) {
                 maxRankDiffNames.clear();
-                maxRankDiffNames.add(name.name);
+                maxRankDiffNames.add(name.getName());
                 maxRankDiffValue = rankDiff;
             }
         }

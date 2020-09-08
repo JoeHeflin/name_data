@@ -5,10 +5,10 @@ public class Test2 {
         int [] ans = {0,0};
         NameArray nameList = new NameArray(gender,year);
 
-        for (Name name : nameList.nameArray) {
-            if(Character.compare(name.name.charAt(0),letter.charAt(0)) == 0) {
+        for (Name name : nameList.getNameArray()) {
+            if(Character.compare(name.getName().charAt(0),letter.charAt(0)) == 0) {
                 ans[0]++;
-                ans[1] += name.count;
+                ans[1] += name.getCount();
             }
         }
         return ans;

@@ -13,7 +13,11 @@ import java.util.*;
 public class NameArray extends ArrayList {
     public static final String FILE_PREFIX = "yob";
     public static final String FILE_TYPE = ".txt";
-    public List<Name> nameArray;
+    private List<Name> nameArray;
+
+    public List<Name> getNameArray() {
+        return nameArray;
+    }
 
     public NameArray(int year) throws Exception {
         int[] yearRange = {year,year};
@@ -42,7 +46,7 @@ public class NameArray extends ArrayList {
 
         for (int year = yearRange[0]; year <= yearRange[1]; year++) {
             String yearString = Integer.toString(yearRange[0]);
-            String fileName = Main.dataPath + FILE_PREFIX + yearString + FILE_TYPE;
+            String fileName = Main.getDataPath() + FILE_PREFIX + yearString + FILE_TYPE;
             try {
                 URL url = new URL(fileName);
                 InputStreamReader stream = new InputStreamReader(url.openStream());
@@ -51,7 +55,7 @@ public class NameArray extends ArrayList {
 
                 while ((line = br.readLine()) != null) {
                     Name n = new Name(line);
-                    if (n.gender.compareTo(gender) == 0 || gender.compareTo("N") == 0) {
+                    if (n.getGender().compareTo(gender) == 0 || gender.compareTo("N") == 0) {
                         newNameArray.add(n);
                     }
                 }
@@ -62,12 +66,11 @@ public class NameArray extends ArrayList {
                     String line;
                     while ((line = br.readLine()) != null) {
                         Name n = new Name(line);
-                        if (n.gender.compareTo(gender) == 0 || gender.compareTo("N") == 0) {
+                        if (n.getGender().compareTo(gender) == 0 || gender.compareTo("N") == 0) {
                             newNameArray.add(n);
                         }
                     }
                 } catch (Exception e1) {
-                    e1.printStackTrace();
                     throw new Exception("Invalid dataPath: " + fileName + ", see README.md");
                 }
             }
@@ -86,10 +89,9 @@ public class NameArray extends ArrayList {
      */
     public int findRank(String givenName) throws Exception {
         this.rankGenerator();
-        boolean breaker = false;
         for (Name name : nameArray) {
-            if (name.name.compareTo(givenName) == 0) {
-                return name.rank;
+            if (name.getName().compareTo(givenName) == 0) {
+                return name.getRank();
             }
         }
         throw new Exception("Name not found");
@@ -101,16 +103,14 @@ public class NameArray extends ArrayList {
     public void rankGenerator(){
         int prevCount = -1;
         int rank = -1;
-
         Collections.sort(nameArray, new SortByCount());
-
         int i = 1;
         for (Name name : nameArray) {
-            if (name.count != prevCount) {
-                prevCount = name.count;
+            if (name.getCount() != prevCount) {
+                prevCount = name.getCount();
                 rank = i;
             }
-            name.rank = rank;
+            name.setRank(rank);
             i++;
         }
     }
@@ -122,10 +122,10 @@ public class NameArray extends ArrayList {
         this.rankGenerator();
         List<Name> ret = new ArrayList<Name>();
         for (Name name : nameArray) {
-            if (name.rank == 1) {
+            if (name.getRank() == 1) {
                 ret.add(name);
             }
-            else if (name.rank > 1) {
+            else if (name.getRank() > 1) {
                 return ret;
             }
             else {

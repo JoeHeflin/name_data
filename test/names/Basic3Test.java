@@ -13,8 +13,8 @@ class Basic3Test {
         int[] years = {3000,3004};
 
         Frequencies ans = Basic3.findMostTopRanks(years,"M");
-        Stack<String> s = ans.names;
-        int f = ans.frequency;
+        Stack<String> s = ans.getNames();
+        int f = ans.getFrequency();
 
         assertEquals("George".compareTo(s.pop()),0);
         assertEquals(3,f);
@@ -26,8 +26,8 @@ class Basic3Test {
         int[] years = {3000,3004};
 
         Frequencies ans = Basic3.findMostTopRanks(years,"F");
-        Stack<String> s = ans.names;
-        int f = ans.frequency;
+        Stack<String> s = ans.getNames();
+        int f = ans.getFrequency();
 
         assertEquals("Margaret".compareTo(s.pop()),0);
         assertEquals(4,f);
@@ -38,8 +38,8 @@ class Basic3Test {
         int[] years = {3000,3003};
 
         Frequencies ans = Basic3.findMostTopRanks(years,"M");
-        Stack<String> s = ans.names;
-        int f = ans.frequency;
+        Stack<String> s = ans.getNames();
+        int f = ans.getFrequency();
 
         assertEquals(0, "George".compareTo(s.pop()));
         assertEquals(0, "Jonny".compareTo(s.pop()));

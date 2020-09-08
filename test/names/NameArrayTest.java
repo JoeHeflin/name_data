@@ -14,7 +14,7 @@ class NameArrayTest {
         Main.setDataPath(Main.REMOTE_TEST_DATA);
         NameArray n = new NameArray("M",years);
         n.rankGenerator();
-        for(Name name:n.nameArray){
+        for(Name name:n.getNameArray()){
            // System.out.println(name.name);
         }
     }
@@ -42,5 +42,12 @@ class NameArrayTest {
         NameArray n = new NameArray(3000);
         n.rankGenerator();
 
-        }
+    }
+
+    @Test
+    void invalidDataSet() throws Exception {
+        Main.setDataPath("src/names/");
+        assertThrows(Exception.class, ()->{Main.findMaxYear();});
+    }
+
     }

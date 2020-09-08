@@ -26,7 +26,6 @@ class Complete3Test {
         List<String> actual = Complete3.maxRankDiff(years, "F");
         List<String> expected = new ArrayList<String>(Arrays.asList("Anna", "Margaret", "MaryLou"));
         for (String name : actual) {
-            System.out.println(name);
             assertEquals(0, name.compareTo(expected.get(actual.indexOf(name))));
         }
     }

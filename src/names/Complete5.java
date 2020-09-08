@@ -17,13 +17,13 @@ public class Complete5 {
         float maxAvgRankVal = -1;
         List<String> maxAvgRankList = new ArrayList<>();
 
-        for (Name name:namesInFirstYear.nameArray) {
-            float avgRank = Main.findAverageRank(years,gender,name.name);
+        for (Name name : namesInFirstYear.getNameArray()) {
+            float avgRank = Main.findAverageRank(years,gender,name.getName());
             if (avgRank == maxAvgRankVal) {
-                maxAvgRankList.add(name.name);
+                maxAvgRankList.add(name.getName());
             } else if (avgRank < maxAvgRankVal || maxAvgRankVal < 0) {
                 maxAvgRankList.clear();
-                maxAvgRankList.add(name.name);
+                maxAvgRankList.add(name.getName());
                 maxAvgRankVal = avgRank;
             }
         }
