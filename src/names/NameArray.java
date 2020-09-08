@@ -78,7 +78,7 @@ public class NameArray extends ArrayList {
      * @param givenName to find rank of
      * @return the rank of the name given
      */
-    public int findRank(String givenName) throws Exception {
+    public int findRank(String givenName) {
         // add valid rank values to names in nameArray
         this.rankGenerator();
         for (Name name : nameArray) {
@@ -87,7 +87,8 @@ public class NameArray extends ArrayList {
                 return name.getRank();
             }
         }
-        throw new Exception("Name not found");
+        return nameArray.size() + 1;
+        //throw new Exception("Name not found");
     }
 
     /**

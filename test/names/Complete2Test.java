@@ -16,8 +16,8 @@ class Complete2Test {
     @Test
     void nameFoundOneYearButNotOther() throws Exception {
         int[] years = {3000,3004};
-        //int diff = Complete2.run("M","Elijah",years);
-        assertThrows(Exception.class,()->{Complete2.rankDiff("M","Elijah",years);});
+        int diff = Complete2.rankDiff("M","Elijah",years);
+        assertEquals(-2,diff);
     }
 
     @Test

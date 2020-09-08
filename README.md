@@ -43,7 +43,7 @@ The testdata/ directory contains the files used by the jUnit tests found in the 
 Certain data errors will throw exceptions:
 - An invalid filename in the resource directory that isn't of the form yob\d+.txt.
 - Missing file(s) for a year when querying about a range of years containing the missing year.
-- Name not found in data file except for one **very important** instance. When running methods that find the ranks of names over a range of years and the name isn't found, the method will return the rank one below the least occuring name in the data file.
+- Name not found in data file except for one **very important** instance. When running methods that find the ranks of names over a range of years and the name isn't found, the method will return the rank one below the least occuring name in the data file. I'm not sure how to indicate this otherwise without print statements.
 
 Known Bugs:
 The program stalls when running Complete5.maxAvgRank() on a dataset as large as a few years in data/ssa_complete/. The algorithm I used works only for the small test files that I made. I didn't realize it wasn't scalable until too late. It very well could work on the larger dataset but runtime would be on the order of minutes, even for a small set of files.

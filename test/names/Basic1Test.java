@@ -10,12 +10,12 @@ class Basic1Test {
 
     @Test
     void nameNotPresentAll() throws Exception {
-        //int[] years = {3000,3003};
         List<Integer> actual = Basic1.ranksInDataset("None", "M");
-        int[] expected = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+        int[] expected = {9,10,9,9,8,1,9,9,9,9,9,9,9};
 
         int index = 0;
         for (int value:actual){
+//            System.out.println(value);
             assertEquals(expected[index],value);
             index++;
         }
@@ -23,9 +23,8 @@ class Basic1Test {
 
     @Test
     void notPresentSome() throws Exception {
-        //int[] years = {3000,3002};
         List<Integer> actual = Basic1.ranksInDataset("Elijah", "M");
-        int[] expected = {6,8,-1,-1,-1,-1,8,6,6,6,6,6,6};
+        int[] expected = {6,8,9,9,8,1,8,6,6,6,6,6,6};
 
         int index = 0;
         for (int value:actual){
@@ -36,7 +35,6 @@ class Basic1Test {
 
     @Test
     void presentAll() throws Exception {
-        //int[] years = {3000,3003};
         List<Integer> actual = Basic1.ranksInDataset("MaryLou", "F");
         int[] expected = {3,3,1,5,5,1,2,4,4,4,4,4,4};
 

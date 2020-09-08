@@ -20,8 +20,8 @@ public class Basic2 {
         List<String> ret = new ArrayList<String>();
         int mostRecentYear = Main.findMaxYear();
         NameArray old = new NameArray(gender, year);
-        NameArray recentMale = new NameArray("M",mostRecentYear);
-        NameArray recentFemale = new NameArray("F",mostRecentYear);
+        NameArray recentMale = new NameArray("M", mostRecentYear);
+        NameArray recentFemale = new NameArray("F", mostRecentYear);
 
         recentMale.rankGenerator();
         recentFemale.rankGenerator();

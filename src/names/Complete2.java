@@ -13,7 +13,9 @@ public class Complete2 {
     public static int rankDiff(String gender, String name, int[] years) throws Exception{
         NameArray oldYearData = new NameArray(gender, years[0]);
         NameArray newYearData = new NameArray(gender, years[1]);
-
+        if (years[0] >= years[1]) {
+            throw new Exception("Invalid year range");
+        }
         int oldRank = oldYearData.findRank(name);
         int newRank = newYearData.findRank(name);
         return oldRank-newRank;

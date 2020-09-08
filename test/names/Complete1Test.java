@@ -12,7 +12,7 @@ class Complete1Test {
     void nameNotPresentAll() throws Exception {
         int[] years = {3000,3003};
         List<Integer> actual = Complete1.ranksInRange("Joe", "M", years);
-        int[] expected = {-1,-1,-1,-1};
+        int[] expected = {9,10,9,9};
 
         for (int value:actual){
             assertEquals(value,expected[actual.indexOf(value)]);
@@ -23,7 +23,7 @@ class Complete1Test {
     void notPresentSome() throws Exception {
         int[] years = {3000,3002};
         List<Integer> actual = Complete1.ranksInRange("Elijah", "M", years);
-        int[] expected = {6,8,-1};
+        int[] expected = {6,8,9};
 
         for (int value:actual){
             assertEquals(expected[actual.indexOf(value)],value);
