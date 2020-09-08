@@ -20,52 +20,43 @@ public class NameArray extends ArrayList {
     }
 
     public NameArray(int year) throws Exception {
-        int[] yearRange = {year,year};
-        List<Name> array = new ArrayList<Name>();
-        nameArray = arrayGenerator("N", yearRange, array);
+        this("N", year);
     }
 
     public NameArray(String gender, int year) throws Exception {
-        int[] yearRange = {year,year};
-        List<Name> array = new ArrayList<Name>();
-        nameArray = arrayGenerator(gender, yearRange, array);
+        this(gender, new int[]{year, year});
     }
 
     public NameArray(String gender, int[] yearRange) throws Exception {
-        List<Name> array = new ArrayList<Name>();
-        nameArray = arrayGenerator(gender, yearRange, array);
-    }
-
-    /**
-     * @param gender of names to add to collection
-     * @param yearRange start and end of the range of years to store names from, inclusive
-     * @param newNameArray an array to pass that collects names after going through multiple files recursively
-     * @return collection of Name objects
-     */
-    public List<Name> arrayGenerator(String gender, int[] yearRange, List<Name> newNameArray) throws Exception { //,int[] years)
+        List<Name> newNameArray = new ArrayList<>();
 
         for (int year = yearRange[0]; year <= yearRange[1]; year++) {
             String yearString = Integer.toString(yearRange[0]);
             String fileName = Main.getDataPath() + FILE_PREFIX + yearString + FILE_TYPE;
+            // try to connect to url using given datapath
             try {
                 URL url = new URL(fileName);
                 InputStreamReader stream = new InputStreamReader(url.openStream());
                 BufferedReader br = new BufferedReader(stream);
                 String line;
-
+                // create a new Name object for every name in the file
                 while ((line = br.readLine()) != null) {
                     Name n = new Name(line);
+                    // only add to new array if correct gender
                     if (n.getGender().compareTo(gender) == 0 || gender.compareTo("N") == 0) {
                         newNameArray.add(n);
                     }
                 }
             } catch (Exception e) {
+                // if url connection fails assume its a local file path
                 try {
                     File localStream = new File(fileName);
                     BufferedReader br = new BufferedReader(new FileReader(localStream));
                     String line;
+                    // create a new Name object for every name in the file
                     while ((line = br.readLine()) != null) {
                         Name n = new Name(line);
+                        // only add to new array if correct gender
                         if (n.getGender().compareTo(gender) == 0 || gender.compareTo("N") == 0) {
                             newNameArray.add(n);
                         }
@@ -75,7 +66,7 @@ public class NameArray extends ArrayList {
                 }
             }
         }
-        return newNameArray;
+        nameArray = newNameArray;
     }
 
     @Override
@@ -88,8 +79,10 @@ public class NameArray extends ArrayList {
      * @return the rank of the name given
      */
     public int findRank(String givenName) throws Exception {
+        // add valid rank values to names in nameArray
         this.rankGenerator();
         for (Name name : nameArray) {
+            // find rank of the name in nameArray
             if (name.getName().compareTo(givenName) == 0) {
                 return name.getRank();
             }
