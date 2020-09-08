@@ -7,9 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class Complete4Test {
 
     @Test
-    void notPresentSomeYears(){
+    void notPresentSomeYears() throws Exception{
         int[] years = {3000,3004};
-        assertThrows(Exception.class,()->{Complete4.avgRank("Elijah","M",years);});
+        float avgRank = Complete4.avgRank("Elijah","M",years);
+        assertEquals(8, Math.round(avgRank));
     }
 
     @Test

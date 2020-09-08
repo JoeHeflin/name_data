@@ -31,8 +31,13 @@ class Complete3Test {
     }
 
     @Test
-    void nameDisappears(){
+    void namesDisappear() throws Exception {
         int[] years = {3000, 3004};
-        assertThrows(Exception.class,()->{List<String> actual = Complete3.maxRankDiff(years, "M");});
+        List<String> actual = Complete3.maxRankDiff(years, "M");
+        List<String> expected = new ArrayList<String>(Arrays.asList("George"));
+        for (String name : actual) {
+            System.out.println(name);
+            assertEquals(0, name.compareTo(expected.get(actual.indexOf(name))));
+        }
     }
 }

@@ -54,7 +54,7 @@ I did not leave myself time to attempt the two optional questions.
 
 ### Notes/Assumptions
 I assume that the data within the files follows the format as specified in NationalReadMe.pdf except I don't require that data is sorted in any way.
-
+I also assume that in question number two of the Basic implementation is asking for both the male and female name/gender pairs that match the rank of the given name/gender/year. (ie if a female name Sally ranked third in 2002, then for the most recent year I return the third place males and females.) It would be easy to provide a gender specific answer I was just unclear as to what the question required.)
 ### Impressions
 I think that I would have saved a lot of time spent refactoring if I had some specs from Complete when I started. It was kind of cool to see how each deadline forced my approach to change but I'd trade that for more time to work on my final product. I also wish that I had an opportunity for a TA code review before now.
 

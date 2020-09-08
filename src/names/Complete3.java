@@ -29,7 +29,7 @@ public class Complete3 {
             try {
                 rankDiff = Math.abs(name.getRank() - newYearData.findRank(name.getName()));
             } catch (Exception e) {
-                rankDiff = Math.abs(name.getRank() - (oldYearData.size() + 1));
+                rankDiff = Math.abs(name.getRank() - (newYearData.size() + 1));
             }
             if (rankDiff == maxRankDiffValue) {
                 maxRankDiffNames.add(name.getName());

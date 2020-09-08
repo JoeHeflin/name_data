@@ -8,3 +8,5 @@ William,M,8579
 James,M,7999
 George,M,540313242
 Charles,M,16
+dumb,M,1
+dumber,M,1

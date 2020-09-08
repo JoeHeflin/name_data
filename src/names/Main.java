@@ -123,7 +123,7 @@ public class Main {
             try {
                 rank = n.findRank(name);
             } catch (Exception e) {
-                rank = n.size() + 1;
+                rank = n.getNameArray().size() + 1;
             }
             totalRank += rank;
         }

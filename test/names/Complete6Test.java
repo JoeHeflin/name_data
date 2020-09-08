@@ -6,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Complete6Test {
     @Test
-    void notPresentSomeYears(){
-        assertThrows(Exception.class,()->{Complete6.mostRecentAvgRank("None","M",2);});
+    void notPresentAllYears() throws Exception {
+        float avgRank = Complete6.mostRecentAvgRank("None","M",2);
+        assertEquals(9, avgRank);
     }
 
     @Test
@@ -18,6 +19,6 @@ class Complete6Test {
 
     @Test
     void invalidYears(){
-        assertThrows(Exception.class,()->{Complete6.mostRecentAvgRank("Elijah","M",13);});
+        assertThrows(Exception.class,()->{Complete6.mostRecentAvgRank("Elijah","M",15);});
     }
 }
