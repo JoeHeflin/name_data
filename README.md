@@ -46,12 +46,15 @@ Certain data errors will throw exceptions:
 - Name not found in data file except for one **very important** instance. When running methods that find the ranks of names over a range of years and the name isn't found, the method will return the rank one below the least occuring name in the data file.
 
 Known Bugs:
+The program stalls when running Complete5.maxAvgRank() on a dataset as large as a few years in data/ssa_complete/. The algorithm I used works only for the small test files that I made. I didn't realize it wasn't scalable until too late. It very well could work on the larger dataset but runtime would be on the order of minutes, even for a small set of files.
 
 Extra credit:
+I did not leave myself time to attempt the two optional questions.
 
 
 ### Notes/Assumptions
-
+I assume that the data within the files follows the format as specified in NationalReadMe.pdf except I don't require that data is sorted in any way.
 
 ### Impressions
+I think that I would have saved a lot of time spent refactoring if I had some specs from Complete when I started. It was kind of cool to see how each deadline forced my approach to change but I'd trade that for more time to work on my final product. I also wish that I had an opportunity for a TA code review before now.
 
