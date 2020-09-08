@@ -7,8 +7,15 @@ public class Complete8 {
     public static int count;
     public static List<String> names;
 
-    public static void run(int[] years, String gender, int rank) throws Exception {
-        List<String> namesAtRank = Complete7.run(years, gender, rank);
+    /**
+     * Finds most common name at a given rank over a range of years
+     * @param years [first year, last year]
+     * @param gender
+     * @param rank
+     * @throws Exception
+     */
+    public static void mostCommonAtRank(int[] years, String gender, int rank) throws Exception {
+        List<String> namesAtRank = Complete7.namesAtRank(years, gender, rank);
         Frequencies f = new Frequencies();
         f.maxNameAtRank(namesAtRank);
         count = f.frequency;

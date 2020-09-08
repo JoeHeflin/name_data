@@ -14,7 +14,7 @@ class Complete8Test {
         void singleName() throws Exception {
                 int[] years = {3000,3004};
                 Complete8 c = new Complete8();
-                Complete8.run(years,"F",5);
+                Complete8.mostCommonAtRank(years,"F",5);
                 List<String> actualNames = c.names;
                 List<String> expectedNames = new ArrayList<>(Arrays.asList("Ruth"));
                 for(String year:actualNames){
@@ -27,7 +27,7 @@ class Complete8Test {
         void multipleNames() throws Exception {
                 int[] years = {3000,3002};
                 Complete8 c = new Complete8();
-                Complete8.run(years,"F",1);
+                Complete8.mostCommonAtRank(years,"F",1);
                 List<String> actualNames = c.names;
                 List<String> expectedNames = new ArrayList<>(Arrays.asList("Helen","Margaret"));
                 for(String year:actualNames){
@@ -39,6 +39,6 @@ class Complete8Test {
         @Test
         void invalidRank(){
                 int[] years = {3000,3004};
-                assertThrows(Exception.class, ()->{Complete8.run(years,"F",13);});
+                assertThrows(Exception.class, ()->{Complete8.mostCommonAtRank(years,"F",13);});
         }
 }

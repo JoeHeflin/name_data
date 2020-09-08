@@ -13,18 +13,8 @@ public class Basic1 {
      * @throws Exception
      */
     public static List<Integer> ranksInDataset(String name, String gender) throws Exception {
-//        List<Integer> ranks = new ArrayList<>();
-//        for (int year = Main.findMinYear() ; year < Main.findMaxYear() + 1 ; year++) {
-//            NameArray n = new NameArray(gender, year);
-//            try {
-//                ranks.add(n.findRank(name));
-//            } catch (Exception e) {
-//                ranks.add(-1);
-//            }
-//        }
-//        return ranks;
         int[] years = {Main.findMinYear(),Main.findMaxYear()};
-        List<Integer> rank = Complete1.run(name,gender,years);
+        List<Integer> rank = Complete1.ranksInRange(name,gender,years);
         return rank;
     }
 }

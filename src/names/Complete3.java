@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Complete3 {
-    public static List<String> run(int[] years, String gender) throws Exception {
+
+    /**
+     * Finds names who's rank changed the most from the first year to
+     * last year of given range
+     * @param years [first year, last year]
+     * @param gender gender over which to search
+     * @return list of names who's rank changed the most
+     * @throws Exception
+     */
+    public static List<String> maxRankDiff(int[] years, String gender) throws Exception {
         int maxRankDiffValue = 0;
         List<String> maxRankDiffNames = new ArrayList<>();
 

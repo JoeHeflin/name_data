@@ -13,7 +13,7 @@ class Complete5Test {
     @Test
     void moreThanOneName() throws Exception {
         int[] years = {3008,3010};
-        List<String> actual = Complete5.run(years,"M");
+        List<String> actual = Complete5.maxAvgRank(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Charles","James","Jonny"));
         for(String name:actual){
 //            System.out.println(name);
@@ -24,7 +24,7 @@ class Complete5Test {
     @Test
     void normalCase() throws Exception {
         int[] years = {3008,3011};
-        List<String> actual = Complete5.run(years,"M");
+        List<String> actual = Complete5.maxAvgRank(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("James"));
         for(String name:actual){
 //                        System.out.println(name);
@@ -35,7 +35,7 @@ class Complete5Test {
     @Test
     void lastYearInRangeChangesAnswer() throws Exception {
         int[] years = {3008,3012};
-        List<String> actual = Complete5.run(years,"M");
+        List<String> actual = Complete5.maxAvgRank(years,"M");
         List<String> expected = new ArrayList<>(Arrays.asList("Jonny"));
         for(String name:actual){
                                     System.out.println(name);

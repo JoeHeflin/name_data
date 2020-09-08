@@ -13,7 +13,7 @@ public class Complete1 {
      * @return
      * @throws Exception
      */
-    public static List<Integer> run(String givenName, String gender, int[] years) throws Exception {
+    public static List<Integer> ranksInRange(String givenName, String gender, int[] years) throws Exception {
         List<Integer> ranks = new ArrayList<Integer>();
         for (int year = years[0]; year < years[1]+1; year++) {
             NameArray n = new NameArray(gender, year);

@@ -11,7 +11,7 @@ class Complete1Test {
     @Test
     void nameNotPresentAll() throws Exception {
         int[] years = {3000,3003};
-        List<Integer> actual = Complete1.run("Joe", "M", years);
+        List<Integer> actual = Complete1.ranksInRange("Joe", "M", years);
         int[] expected = {-1,-1,-1,-1};
 
         for (int value:actual){
@@ -22,7 +22,7 @@ class Complete1Test {
     @Test
     void notPresentSome() throws Exception {
         int[] years = {3000,3002};
-        List<Integer> actual = Complete1.run("Elijah", "M", years);
+        List<Integer> actual = Complete1.ranksInRange("Elijah", "M", years);
         int[] expected = {6,8,-1};
 
         for (int value:actual){
@@ -33,7 +33,7 @@ class Complete1Test {
     @Test
     void presentAll() throws Exception {
         int[] years = {3000,3002};
-        List<Integer> actual = Complete1.run("Jonny", "M", years);
+        List<Integer> actual = Complete1.ranksInRange("Jonny", "M", years);
         int[] expected = {1,2,1};
 
         for (int value:actual){
