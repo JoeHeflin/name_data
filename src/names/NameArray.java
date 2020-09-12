@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Functions to perform on a collection of Name objects
  */
-public class NameArray extends ArrayList {
+public class NameArray { //extends ArrayList { // why extend???
     public static final String FILE_PREFIX = "yob";
     public static final String FILE_TYPE = ".txt";
     private List<Name> nameArray;
@@ -69,7 +69,7 @@ public class NameArray extends ArrayList {
         nameArray = newNameArray;
     }
 
-    @Override
+   // @Override
     public Name get(int index) {
         return nameArray.get(index);
     }
@@ -98,7 +98,7 @@ public class NameArray extends ArrayList {
         int prevCount = -1;
         int rank = -1;
         Collections.sort(nameArray, new SortByCount());
-        int i = 1;
+        int i = 1; // DON'T USE i
         for (Name name : nameArray) {
             if (name.getCount() != prevCount) {
                 prevCount = name.getCount();
